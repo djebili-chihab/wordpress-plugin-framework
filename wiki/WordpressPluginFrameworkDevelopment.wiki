@@ -1,0 +1,28 @@
+#summary A framework for creating Wordpress plugins.
+#labels Featured,Phase-Requirements,Phase-Design
+
+= Introduction =
+
+*The Wordpress Plugin Framework v0.01 has been released.*
+
+This first version of the Wordpress Plugin Framework (WPF) mainly focuses on the initial development of the WordpressPluginFramework class as well as the creation and maintenance of the plugin's administration page.
+
+
+= Details =
+
+*This version is for evaluation use only!!!*
+
+This version demonstrates the basic design of the WPF as well as:
+  * Deriving a plugin from the WordpressPluginFramework base class.
+  * Creating options for the plugin.
+  * Initializing the plugin.
+  * Creating content blocks for the plugin's administration page.
+  * Registering the plugin's administration page with Wordpress.
+
+Future versions will offer further management and background enhancements as well as the addition of plugin documentation, plugin usage, and plugin widget development strategies.
+
+Stay tuned for more!
+
+  -- Keith
+
+You can check out more of my work at [http://www.doubleblackdesign.com DoubleBlackDesign.com].
