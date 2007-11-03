@@ -2,10 +2,10 @@
 /**
  *     ---------------       DO NOT DELETE!!!     ---------------
  * 
- *     Plugin Name:  WPF-TestPlugin
+ *     Plugin Name:  01-WPF-TestPlugin
  *     Plugin URI:   http://code.google.com/p/wordpress-plugin-framework/
  *     Description:  A simple test plugin used to demonstrate the WordpressPluginFramework class.
- *     Version:      0.01
+ *     Version:      0.02
  *     Author:       Keith Huster
  *     Author URI:   http://www.doubleblackdesign.com
  *
@@ -39,7 +39,7 @@
  * 
  */
 define("PLUGIN_TITLE", "Test Plugin for the Wordpress Plugin Framework");
-define("PLUGIN_VERSION", "0.01");
+define("PLUGIN_VERSION", "0.02");
 define("PLUGIN_ADMIN_MENU_TITLE", "Test Plugin");
 define("PLUGIN_ADMIN_MENU_PAGE_TITLE", "Test Plugin Page");
 define("PLUGIN_ADMIN_MENU_PAGE_SLUG", "test-plugin-options");
@@ -116,6 +116,11 @@ class TestPlugin extends WordpressPluginFramework
       <br />
       <?php
       $this->DisplayPluginOption( 'myCheckboxOption' );
+      ?>
+      <br />
+      <br />
+      <?php
+      $this->DisplayPluginOption( 'myRadiobuttonOption' );
    }
 
    /**
@@ -221,6 +226,7 @@ if( !$myTestPlugin  )
   // Add all of the options specific to your plugin then initialize the plugin.
   $myTestPlugin->AddOption( OPTION_TYPE_TEXTBOX, 'myTextboxOption', 'Hello!', 'Simple textbox option for your plugin.' );
   $myTestPlugin->AddOption( OPTION_TYPE_CHECKBOX, 'myCheckboxOption', CHECKBOX_UNCHECKED, 'Simple checkbox option for your plugin.' );
+  $myTestPlugin->AddOption( OPTION_TYPE_RADIOBUTTONS, 'myRadiobuttonOption', 'Value 1', 'Simple radiobutton option for your plugin.,Value 1,Value 2,Value 3' );
   $myTestPlugin->Initialize( __FILE__, PLUGIN_TITLE, PLUGIN_VERSION );
   
   // Add all of the custom content blocks to your plugin's administration page then register your

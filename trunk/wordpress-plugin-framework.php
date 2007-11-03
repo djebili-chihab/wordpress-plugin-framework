@@ -29,7 +29,7 @@
  * Definitions list for the WordpressPluginFramework.
  * 
  */
-define("PLUGIN_FRAMEWORK_VERSION", "0.01");
+define("PLUGIN_FRAMEWORK_VERSION", "0.02");
 // Top level administration menus.
 define("PARENT_MENU_DASHBOARD", "index.php");
 define("PARENT_MENU_WRITE", "post-new.php");
@@ -64,6 +64,7 @@ define("OPTION_TYPE_TEXTBOX", "text");
 define("OPTION_TYPE_CHECKBOX", "checkbox");
 define("CHECKBOX_UNCHECKED", "");
 define("CHECKBOX_CHECKED", "on");
+define("OPTION_TYPE_RADIOBUTTONS", "radio");
 
 
 
@@ -687,6 +688,36 @@ class WordpressPluginFramework
 		         $optionMarkup .= '<input type="checkbox" name="' . $optionName . '" ' . $checkBoxValue . ' /> ';
 			      $optionMarkup .= $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION];
 		         $optionMarkup .= '</label>';
+               break;
+            case OPTION_TYPE_RADIOBUTTONS:
+               // Split the comma delimited option description and values for the radio buttons.
+               $optionIdCount = 0;
+               $radioValuesArray = split( ',', $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] );
+               if( is_array( $radioValuesArray ) )
+               {
+                  // Loop through each of the comma delimited values to process the radiobuttons.
+                  foreach( $radioValuesArray AS $valueName )
+                  {
+                     if( $optionIdCount == 0 )
+                     {
+                        // The first paramter is the actual description of the radiobuttons group.
+                        $optionMarkup = $valueName . '<br />';
+                     }
+                     else
+                     {
+                        // The rest of the parameters are the values for each of the radio buttons so we can
+                        // generate the markup required to display an XHTML compliant set of radio buttons.
+                        $selectedValue = ( get_option( $optionName ) == $valueName ) ? 'checked="checked"' : '';
+                        $optionMarkup .= '<input type="radio" name="' . $optionName . '" id="' . $optionName . $optionIdCount . '" value="' . $valueName . '" ' . $selectedValue . ' /> ';
+                        $optionMarkup .= $valueName;
+                        $optionMarkup .= '<br />';
+                     }
+                     
+                     // Finally increment the option ID value so that the next radiobutton will have
+                     // and ID field of 1 greater than the previous radiobutton.
+                     $optionIdCount++;
+                  }
+               }
                break;
             default:
                // Simply return nothing.
