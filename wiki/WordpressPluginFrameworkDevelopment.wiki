@@ -1,14 +1,18 @@
 #summary A framework for creating Wordpress plugins.
 #labels Featured,Phase-Requirements,Phase-Design
 
-= Introduction =
+= Current Development =
+
+*Wordpress Plugin Framework - v0.02*
+
+
+= Latest Release =
 
 *The Wordpress Plugin Framework v0.01 has been released.*
 
 This first version of the Wordpress Plugin Framework (WPF) mainly focuses on the initial development of the WordpressPluginFramework class as well as the creation and maintenance of the plugin's administration page.
 
-
-= Details =
+== Details ==
 
 *This version is for evaluation use only!!!*
 
