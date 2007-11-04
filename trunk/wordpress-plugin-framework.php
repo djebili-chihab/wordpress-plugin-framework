@@ -61,6 +61,7 @@ define("OPTION_INDEX_TYPE", 2);
 // Types of options to be displayed on the administration page.
 //TODO:Add more option types (combobox, radio buttons, etc...).
 define("OPTION_TYPE_TEXTBOX", "text");
+define("OPTION_TYPE_TEXTAREA", "textarea");
 define("OPTION_TYPE_CHECKBOX", "checkbox");
 define("CHECKBOX_UNCHECKED", "");
 define("CHECKBOX_CHECKED", "on");
@@ -681,6 +682,11 @@ class WordpressPluginFramework
                $optionMarkup .= $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION];
                $optionMarkup .= '</label>';
                break;
+            case OPTION_TYPE_TEXTAREA:
+               // Generate the markup required to display an XHTML compliant textarea.
+               $optionMarkup = $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] . '<br />';
+               $optionMarkup .= '<textarea name="' . $optionName . '" cols="50" rows="10">' . get_option( $optionName ) . '</textarea> ';
+               break;
             case OPTION_TYPE_CHECKBOX:
                // Generate the markup required to display an XHTML compliant checkbox.
                $optionMarkup = '<label for="' . $optionName . '">';
@@ -692,11 +698,11 @@ class WordpressPluginFramework
             case OPTION_TYPE_RADIOBUTTONS:
                // Split the comma delimited option description and values for the radio buttons.
                $optionIdCount = 0;
-               $radioValuesArray = split( ',', $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] );
-               if( is_array( $radioValuesArray ) )
+               $valuesArray = split( ',', $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] );
+               if( is_array( $valuesArray ) )
                {
                   // Loop through each of the comma delimited values to process the radiobuttons.
-                  foreach( $radioValuesArray AS $valueName )
+                  foreach( $valuesArray AS $valueName )
                   {
                      if( $optionIdCount == 0 )
                      {
