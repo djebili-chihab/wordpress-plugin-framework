@@ -67,6 +67,7 @@ define("CHECKBOX_UNCHECKED", "");
 define("CHECKBOX_CHECKED", "on");
 define("OPTION_TYPE_RADIOBUTTONS", "radio");
 define("OPTION_TYPE_PASSWORDBOX", "password");
+define("OPTION_TYPE_COMBOBOX", "combobox");
 
 
 
@@ -584,18 +585,7 @@ class WordpressPluginFramework
 	 */
    function GetOptionValue( $optionName )
    {
-      global $wpdb;
-      $optionValue = OPTION_PARAMETER_NOT_FOUND;
-      
-      $allOptionsArray = $wpdb->get_results( "SELECT * FROM $wpdb->options ORDER BY option_name" );
-      foreach( (array)$allOptionsArray as $option )
-      {
-         if( $option->option_name == $optionName )
-         {
-            $optionValue = $option->option_value;
-            break;
-         }
-      }
+      $optionValue = get_option( $optionName );
     
       return $optionValue;
    }
@@ -730,6 +720,37 @@ class WordpressPluginFramework
                // Generate the markup required to display an XHTML compliant passwordbox.
                $optionMarkup = '<label for="' . $optionName . '">' . $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] . ' </label>';
                $optionMarkup .= '<input type="password" name="' . $optionName . '" value="' . get_option( $optionName ) . '" /> ';
+               break;
+            case OPTION_TYPE_COMBOBOX:
+               // Split the comma delimited option description and values for the combobox.
+               $optionIdCount = 0;
+               $valuesArray = split( ',', $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] );
+               if( is_array( $valuesArray ) )
+               {
+                  // Loop through each of the comma delimited values to process the combobox values.
+                  foreach( $valuesArray AS $valueName )
+                  {
+                     if( $optionIdCount == 0 )
+                     {
+                        // The first paramter is the actual description of the combobox.
+                        $optionMarkup = $valueName . ' <select name="' . $optionName . '" >';
+                     }
+                     else
+                     {
+                        // The rest of the parameters are the values for each of the combobox options so we can
+                        // generate the markup required to display an XHTML compliant combobox.
+                        $selectedValue = ( get_option( $optionName ) == $valueName ) ? 'selected="selected"' : '';
+                        $optionMarkup .= '<option label="' . $valueName . '" ' . $selectedValue . ' >' . $valueName . '</option>';
+                        $optionMarkup .= '<br />';
+                     }
+                     
+                     // Finally increment the option ID value so that the next radiobutton will have
+                     // and ID field of 1 greater than the previous radiobutton.
+                     $optionIdCount++;
+                  }
+                  
+                  $optionMarkup .= '</select>';
+               }
                break;
             default:
                // Simply return nothing.

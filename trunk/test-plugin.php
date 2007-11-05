@@ -131,6 +131,11 @@ class TestPlugin extends WordpressPluginFramework
       <br />
       <?php
       $this->DisplayPluginOption( 'myPasswordboxOption' );
+      ?>
+      <br />
+      <br />
+      <?php
+      $this->DisplayPluginOption( 'myComboboxOption' );
    }
 
    /**
@@ -239,6 +244,7 @@ if( !$myTestPlugin  )
   $myTestPlugin->AddOption( OPTION_TYPE_RADIOBUTTONS, 'myRadiobuttonOption', 'Value 1', 'Simple radiobutton option for your plugin.,Value 1,Value 2,Value 3' );
   $myTestPlugin->AddOption( OPTION_TYPE_TEXTAREA, 'myTextareaOption', 'Hello! This is an example of a multiline text area.', 'Simple textarea option for your plugin.' );
   $myTestPlugin->AddOption( OPTION_TYPE_PASSWORDBOX, 'myPasswordboxOption', 'password', 'Simple passwordbox option for your plugin.' );
+  $myTestPlugin->AddOption( OPTION_TYPE_COMBOBOX, 'myComboboxOption', 'Combo 1', 'Simple combobox option for your plugin.,Combo 1,Combo 2,Combo 3,Combo 4,Combo 5' );
   $myTestPlugin->Initialize( __FILE__, PLUGIN_TITLE, PLUGIN_VERSION );
   
   // Add all of the custom content blocks to your plugin's administration page then register your
