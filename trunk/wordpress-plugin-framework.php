@@ -441,18 +441,27 @@ class WordpressPluginFramework
    {
       ?>
       <div class="wrap" id="<?php echo( $this->_pluginAdminMenuPageSlug ) ?>-div">
-         <form method="post" action="options.php">
-            <?php wp_nonce_field( 'update-options' ); ?>
-            <input type="hidden" name="action" value="update" />
+         <form method="post">
             <?php
-            // Create a comma delimited list of the available plugin options to be updated by the
-            // page_options hidden input object.
-            foreach( $this->_pluginOptionsArray AS $optionKey=>$optionValueArray )
+            if( $_REQUEST['plugin_options_update'] )
             {
-               $pageOptionsValue .= $optionKey.',';
+               // Create a comma delimited list of the available plugin options to be updated by the
+               // page_options hidden input object.
+               foreach( $this->_pluginOptionsArray AS $optionKey => $optionValueArray )
+               {
+                  update_option( $optionKey, $_REQUEST[$optionKey] );
+               }
+            }
+            else if( $_REQUEST['plugin_options_reset'] )
+            {
+               // Create a comma delimited list of the available plugin options to be updated by the
+               // page_options hidden input object.
+               foreach( $this->_pluginOptionsArray AS $optionKey => $optionValueArray )
+               {
+                  update_option( $optionKey, $optionValueArray[OPTION_INDEX_VALUE] );
+               }
             }
             ?>
-            <input type="hidden" name="page_options" value="<?php echo( trim( $pageOptionsValue, ',' ) ); ?>" />
     
             <h2><?php echo( $this->_pluginTitle . ' (v' . $this->_pluginVersion . ')' ); ?></h2>
             
@@ -482,8 +491,7 @@ class WordpressPluginFramework
                <div>
 				     <p class="submit">
 				        <input type="submit" name="plugin_options_update" value="Update options" />
-					     <?php // TODO - Add button to handle resetting of the option parameters. ?>
-					     <!-- <input type="submit" name="plugin_options_reset" value="Reset options" onclick='return( confirm( "Do you really want to reset these options?" ) );' /> -->
+					     <input type="submit" name="plugin_options_reset" value="Reset options" onclick='return( confirm( "Do you really want to reset these options?" ) );' />
 				     </p>
 			      </div>
             </div>
