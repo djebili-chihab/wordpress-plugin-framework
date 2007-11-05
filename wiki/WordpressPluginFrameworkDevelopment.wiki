@@ -5,6 +5,11 @@
 
 *Wordpress Plugin Framework - v0.02*
 
+This version improves on v0.01 by adding:
+  * Support for more option types.
+  * Support for updating and resetting option values.
+  * Support for optional "uninstall" of the plugin upon deactivation.
+
 
 = Latest Release =
 
