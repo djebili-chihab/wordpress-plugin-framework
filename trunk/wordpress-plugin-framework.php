@@ -66,6 +66,7 @@ define("OPTION_TYPE_CHECKBOX", "checkbox");
 define("CHECKBOX_UNCHECKED", "");
 define("CHECKBOX_CHECKED", "on");
 define("OPTION_TYPE_RADIOBUTTONS", "radio");
+define("OPTION_TYPE_PASSWORDBOX", "password");
 
 
 
@@ -724,6 +725,11 @@ class WordpressPluginFramework
                      $optionIdCount++;
                   }
                }
+               break;
+            case OPTION_TYPE_PASSWORDBOX:
+               // Generate the markup required to display an XHTML compliant passwordbox.
+               $optionMarkup = '<label for="' . $optionName . '">' . $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] . ' </label>';
+               $optionMarkup .= '<input type="password" name="' . $optionName . '" value="' . get_option( $optionName ) . '" /> ';
                break;
             default:
                // Simply return nothing.
