@@ -103,6 +103,16 @@ class WordpressPluginFramework
 	var $_pluginVersion = "";
 	
 	/**
+	 * @var string   Name of the plugin's subfolder.
+	 */
+	var $_pluginSubfolderName = "";
+	
+	/**
+	 * @var string   Name of the plugin's file.
+	 */
+	var $_pluginFileName = "";
+	
+	/**
 	 * @var string   The parent menu of the plugin's administration submenu.
 	 *   Note: Valid values are defined by "PARENT_MENU_xxx" at the top of this file.
 	 */
@@ -177,11 +187,13 @@ class WordpressPluginFramework
 	 *
 	 * This function performs the required initialization procedures for a plugin based on the
     * WordpressPluginFramework including storing configuration information and registering
-    * activation and deactivation hooks with the Wordpress core.
+    * activation hook with the Wordpress core.
 	 *
-	 * @param string    $pluginFile       Full path to the plugin's file.
-	 * @param string    $pluginTitle      Title of this plugin.
-	 * @param string    $pluginVersion    Version of this plugin.	 
+	 * @param string    $pluginFile          Full path to the plugin's file.
+	 * @param string    $pluginTitle         Title of this plugin.
+	 * @param string    $pluginVersion       Version of this plugin.	 
+	 * @param string    $pluginSubfolderName Name of the plugin's subfolder.
+	 * @param string    $pluginFileName      Name of the plugin's main file.
 	 * 
     * @return void     None.  	 
 	 * 
@@ -189,15 +201,16 @@ class WordpressPluginFramework
     * @since {WP 2.3}
 	 * @author Keith Huster
 	 */
-   function Initialize( $pluginFile, $pluginTitle, $pluginVersion )
+   function Initialize( $pluginFile, $pluginTitle, $pluginVersion, $pluginSubfolderName, $pluginFileName )
 	{
 	   // Store the relevant information concerning this plugin.
       $this->_pluginTitle = $pluginTitle;
       $this->_pluginVersion = $pluginVersion;
+      $this->_pluginSubfolderName = $pluginSubfolderName;
+      $this->_pluginFileName = $pluginFileName;
 	   
-      // Register the hooks required to properly handle activation and deactivation of this plugin.
+      // Register the hooks required to properly handle activation of this plugin.
       register_activation_hook( $pluginFile, array( $this, '_RegisterPluginOptions' ) );
-      register_deactivation_hook( $pluginFile, array( $this, '_UnregisterPluginOptions' ) );
    }
 	
 	
@@ -445,56 +458,78 @@ class WordpressPluginFramework
             <?php
             if( $_REQUEST['plugin_options_update'] )
             {
-               // Create a comma delimited list of the available plugin options to be updated by the
-               // page_options hidden input object.
-               foreach( $this->_pluginOptionsArray AS $optionKey => $optionValueArray )
-               {
-                  update_option( $optionKey, $_REQUEST[$optionKey] );
-               }
+               // Update the plugin's options.
+               $this->_UpdatePluginOptions( &$_REQUEST );
             }
             else if( $_REQUEST['plugin_options_reset'] )
             {
-               // Create a comma delimited list of the available plugin options to be updated by the
-               // page_options hidden input object.
-               foreach( $this->_pluginOptionsArray AS $optionKey => $optionValueArray )
-               {
-                  update_option( $optionKey, $optionValueArray[OPTION_INDEX_VALUE] );
-               }
-            }
-            ?>
-    
-            <h2><?php echo( $this->_pluginTitle . ' (v' . $this->_pluginVersion . ')' ); ?></h2>
-            
-            <?php $this->_InitializeDbxManagementSystem(); ?>
-            
-            <div id="poststuff">
-               <div id="moremeta"> <!-- Used to locate blocks in the SIDEBAR content area. -->
-                  <div id="sidebarBlocks" class="dbx-group">
-                     <?php
-                     // Load the Sidebar blocks first...
-                     $this->_DisplayAdministrationPageBlocks( CONTENT_BLOCK_TYPE_SIDEBAR );
-                     ?>
-                  </div>
-               </div>
+               // Reset the plugin's options.
+               $this->_ResetPluginOptions();
                
-               <div id="advancedstuff"> <!-- Used to locate blocks in the main area. -->
-                  <div id="mainBlocks" class="dbx-group" >
-                     <div class="dbx-b-ox-wrapper">
+            }
+            else if( $_REQUEST['plugin_options_uninstall'] )
+            {
+               // Uninstall the plugin by removing the plugin options from the Wordpress database.
+               $this->_UnregisterPluginOptions();
+            }
+            
+            if( $this->_IsPluginInstalled() )
+            {
+               ?>
+               <h2><?php echo( $this->_pluginTitle . ' (v' . $this->_pluginVersion . ')' ); ?></h2>
+            
+               <?php $this->_InitializeDbxManagementSystem(); ?>
+               
+               <div id="poststuff">
+                  <div id="moremeta"> <!-- Used to locate blocks in the SIDEBAR content area. -->
+                     <div id="sidebarBlocks" class="dbx-group">
                         <?php
-                        // Then load the main content blocks...
-                        $this->_DisplayAdministrationPageBlocks( CONTENT_BLOCK_TYPE_MAIN );
+                        // Load the Sidebar blocks first...
+                        $this->_DisplayAdministrationPageBlocks( CONTENT_BLOCK_TYPE_SIDEBAR );
                         ?>
                      </div>
                   </div>
+                  
+                  <div id="advancedstuff"> <!-- Used to locate blocks in the main area. -->
+                     <div id="mainBlocks" class="dbx-group" >
+                        <div class="dbx-b-ox-wrapper">
+                           <?php
+                           // Then load the main content blocks...
+                           $this->_DisplayAdministrationPageBlocks( CONTENT_BLOCK_TYPE_MAIN );
+                           ?>
+                        </div>
+                     </div>
+                  </div>
+                  
+                  <div>
+   				     <p class="submit">
+   				        <input type="submit" name="plugin_options_update" value="Update options" />
+   					     <input type="submit" name="plugin_options_reset" value="Reset options" onclick='return( confirm( "Do you really want to reset these options?" ) );' />
+   					     <br /><br />
+   					     <input type="submit" name="plugin_options_uninstall" value="Uninstall plugin" onclick='return( confirm( "Do you really want to uninstall this plugin and delete all stored information from the database?\n\nNote: You will be asked to deactivate the plugin to complete the uninstallation process." ) );' />
+   				     </p>
+   			      </div>
                </div>
+               <?php
+            }
+            else
+            {
+               // Update the URL to perform deactivation of the specified plugin.
+               $deactivateUrl = 'plugins.php?action=deactivate&amp;plugin=' . $this->_pluginSubfolderName . '/' . $this->_pluginFileName . '.php';
+			      if( function_exists( 'wp_nonce_url' ) )
+               {
+                  $actionName = 'deactivate-plugin_' . $this->_pluginSubfolderName . '/' . $this->_pluginFileName . '.php';
+                  $deactivateUrl = wp_nonce_url( $deactivateUrl, $actionName );
+               }
                
-               <div>
-				     <p class="submit">
-				        <input type="submit" name="plugin_options_update" value="Update options" />
-					     <input type="submit" name="plugin_options_reset" value="Reset options" onclick='return( confirm( "Do you really want to reset these options?" ) );' />
-				     </p>
-			      </div>
-            </div>
+               // Remind the user to deactivate the plugin.
+               echo( '<div id="message" class="updated fade">' );
+               echo( '<p>All of the "' . $this->_pluginTitle . '" plugin options have been deleted from the database.</p>' );
+               echo( '<p><strong><a href="' . $deactivateUrl . '">Click here</a></strong> to finish the uninstallation and deactivate the "' . $this->_pluginTitle . '" plugin.</p>' );
+               echo( '</div>' );
+            }
+            ?>
+          
          </form>
       </div>
       <?php
@@ -531,8 +566,10 @@ class WordpressPluginFramework
    /**
 	 * _RegisterPluginOptions() - Adds the plugin's options to the Wordpress options database.
 	 *
-	 * This function utilizes the Wordpress core update_option() function to add (or update if already added)
-    * each of the options specified in the plugin's option array to the Wordpress options database.
+	 * This function utilizes the Wordpress core update_option() function to add each of the options
+    * specified in the plugin's option array to the Wordpress options database. This function verifies
+    * that the specified options have not been previously added to the database to prevent overwriting
+    * stored configuration values.
 	 *
 	 * @param void      None.
 	 * 
@@ -546,9 +583,27 @@ class WordpressPluginFramework
    {
       if( is_array( $this->_pluginOptionsArray ) )
       {
-         foreach( $this->_pluginOptionsArray AS $optionKey=>$optionValue )
+         global $wpdb;
+         
+         $registeredOptions = $wpdb->get_results( "SELECT * FROM $wpdb->options ORDER BY option_name" );
+         
+         foreach( $this->_pluginOptionsArray AS $optionKey => $optionValue )
          {
-			   update_option( $optionKey, $optionValue[OPTION_INDEX_VALUE] );
+            // Only update the option value if the option has not been previously added to the database.
+            $optionFound = false;
+            foreach( (array) $registeredOptions AS $registeredOption )
+            {
+               $registeredOption->option_name = attribute_escape( $registeredOption->option_name );
+               if( $optionKey == $registeredOption->option_name )
+               {
+                  $optionFound = true;
+               }
+            }
+            
+            if( $optionFound == false )
+            {
+               update_option( $optionKey, $optionValue[OPTION_INDEX_VALUE] );
+            }
 			}
       }
    }
@@ -563,7 +618,7 @@ class WordpressPluginFramework
 	 * 
     * @return void     None.  	 
 	 * 
-	 * @access private  Access via register_deactivation_hook() callback only.
+	 * @access private
     * @since {WP 2.3}
 	 * @author Keith Huster
 	 */
@@ -571,10 +626,106 @@ class WordpressPluginFramework
    {
       if( is_array( $this->_pluginOptionsArray ) )
       {
-         foreach( $this->_pluginOptionsArray AS $optionKey=>$optionValue )
+         foreach( $this->_pluginOptionsArray AS $optionKey => $optionValue )
          {
 			   delete_option( $optionKey );
 			}
+      }
+   }
+   
+   /**
+	 * _IsPluginInstalled() - Determines if the plugin is installed.
+	 *
+	 * This function verifies that the plugin options have been installed in the Wordpress options database and
+    * returns "true" if they are and "false" if the are not.
+	 *
+	 * @param void      None.
+	 * 
+    * @return bool     $pluginInstalled      Returns "true" if installed and "false" if not.
+	 * 
+	 * @access private
+    * @since {WP 2.3}
+	 * @author Keith Huster
+	 */
+   function _IsPluginInstalled()
+   {
+      $pluginInstalled = true;
+      
+      if( is_array( $this->_pluginOptionsArray ) )
+      {
+         global $wpdb;
+         
+         $registeredOptions = $wpdb->get_results( "SELECT * FROM $wpdb->options ORDER BY option_name" );
+         
+         foreach( $this->_pluginOptionsArray AS $optionKey => $optionValue )
+         {
+            // Only update the option value if the option has not been previously added to the database.
+            $optionFound = false;
+            foreach( (array) $registeredOptions AS $registeredOption )
+            {
+               $registeredOption->option_name = attribute_escape( $registeredOption->option_name );
+               if( $optionKey == $registeredOption->option_name )
+               {
+                  $optionFound = true;
+               }
+            }
+            
+            if( $optionFound == false )
+            {
+               // The plugin is not fully installed so we need to break out of this loop and
+               // update the installed flag.
+               $pluginInstalled = false;
+               break;
+            }
+			}
+      }
+      
+      return $pluginInstalled;
+   }
+   
+   /**
+	 * _UpdatePluginOptions() - Updates the plugin options in the Wordpress database.
+	 *
+	 * This function retrieves the plugin's options from the _POST[] method and updates the associated
+    * options stored within the Wordpress options database.
+	 *
+	 * @param array     &$requestArray    Reference to the _REQUEST[] array.
+	 * 
+    * @return void     None.
+	 * 
+	 * @access private
+    * @since {WP 2.3}
+	 * @author Keith Huster
+	 */
+   function _UpdatePluginOptions( &$requestArray )
+   {
+      // Update the plugin's options using the values retrieved from the POST method.
+      foreach( $this->_pluginOptionsArray AS $optionKey => $optionValueArray )
+      {
+         update_option( $optionKey, $requestArray[$optionKey] );
+      }
+   }
+   
+   /**
+	 * _ResetPluginOptions() - Resets the plugin options in the Wordpress database.
+	 *
+	 * This function retrieves the plugin's default options from the options array and updates the associated
+    * options stored within the Wordpress options database.
+	 *
+	 * @param void      None.
+	 * 
+    * @return void     None.
+	 * 
+	 * @access private
+    * @since {WP 2.3}
+	 * @author Keith Huster
+	 */
+   function _ResetPluginOptions()
+   {
+      // Update the plugin's options using the default values from the options array.
+      foreach( $this->_pluginOptionsArray AS $optionKey => $optionValueArray )
+      {
+         update_option( $optionKey, $optionValueArray[OPTION_INDEX_VALUE] );
       }
    }
 

@@ -38,11 +38,13 @@
  * Definitions list for our custom plugin.
  * 
  */
-define("PLUGIN_TITLE", "Test Plugin for the Wordpress Plugin Framework");
-define("PLUGIN_VERSION", "0.02");
-define("PLUGIN_ADMIN_MENU_TITLE", "Test Plugin");
-define("PLUGIN_ADMIN_MENU_PAGE_TITLE", "Test Plugin Page");
-define("PLUGIN_ADMIN_MENU_PAGE_SLUG", "test-plugin-options");
+define( "PLUGIN_TITLE", "Test Plugin for the Wordpress Plugin Framework" );
+define( "PLUGIN_VERSION", "0.02" );
+define( "PLUGIN_SUBFOLDER_NAME", "wpf-test-plugin" );
+define( "PLUGIN_FILE_NAME", "test-plugin" );
+define( "PLUGIN_ADMIN_MENU_TITLE", "Test Plugin" );
+define( "PLUGIN_ADMIN_MENU_PAGE_TITLE", "Test Plugin Page" );
+define( "PLUGIN_ADMIN_MENU_PAGE_SLUG", "test-plugin-options" );
 
 
 
@@ -245,7 +247,7 @@ if( !$myTestPlugin  )
   $myTestPlugin->AddOption( OPTION_TYPE_TEXTAREA, 'myTextareaOption', 'Hello! This is an example of a multiline text area.', 'Simple textarea option for your plugin.' );
   $myTestPlugin->AddOption( OPTION_TYPE_PASSWORDBOX, 'myPasswordboxOption', 'password', 'Simple passwordbox option for your plugin.' );
   $myTestPlugin->AddOption( OPTION_TYPE_COMBOBOX, 'myComboboxOption', 'Combo 1', 'Simple combobox option for your plugin.,Combo 1,Combo 2,Combo 3,Combo 4,Combo 5' );
-  $myTestPlugin->Initialize( __FILE__, PLUGIN_TITLE, PLUGIN_VERSION );
+  $myTestPlugin->Initialize( __FILE__, PLUGIN_TITLE, PLUGIN_VERSION, PLUGIN_SUBFOLDER_NAME, PLUGIN_FILE_NAME );
   
   // Add all of the custom content blocks to your plugin's administration page then register your
   // plugin's administration page with the Wordpress core.
