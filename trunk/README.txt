@@ -1,53 +1,74 @@
-Wordpress Plugin Framework	v0.01
-------------------------------------
-Author: Keith Huster
-Date: 11/01/2007
+=== WPF-TestPlugin ===
+Contributors: husterk
+Donate link: http://www.doubleblackdesign.com/about/
+Tags: wordpress, plugin framework, plugin development
+Requires at least: 2.3
+Tested up to: 2.3.1
+Stable tag: v0.02
 
+The WPF-TestPlugin is a simple plugin used to demonstrate the capabilities of the Wordpress Plugin Framework (WPF).
 
+== Description ==
 
-License
-------------------------------------
-Copyright 2007  Keith Huster  (email : husterk@doubleblackdesign.com)
+The WPF-TestPlugin is used as a playground for demonstrating the features and capabilities of the Wordpress Plugin
+Framework (WPF). The WPF is a PHP class that is used to provide a framework for the development of Wordpress plugins.
+This framework helps to generalize and simplify plugin design while also helping plugins adhere to a common administration
+and usage standard.
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
+Currently, the WPF-TestPlugin demonstrates the features of the WPF listed below.
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+1. Deriving a plugin from the WordpressPluginFramework base class.
+2. Creating options for the plugin.
+3. Initializing the plugin.
+4. Creating content blocks for the plugin's administration page.
+5. Registering the plugin's administration page with Wordpress.
+6. Updating and resetting of the plugin's options.
+7. Uninstallation of the plugin.
 
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+= License =
 
+This WPF-TestPlugin and Wordpress Plugin Framework are being developed under the GNU General Public License, version 2.
 
+[GNU General Public License, version 2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html "GNU General Public License, version 2")
 
-Installation
-------------------------------------
-Simply copy the "wpf-test-plugin" folder to your Wordpress "Plugins" directory.
+= Support WPF Development =
 
+Help support development of the WPF-TestPlugin and Wordpress Plugin Framework by making a donation.
 
+[Donate to Double Black Design](http://www.doubleblackdesign.com/about/ "Donate to Double Black Design")
 
-Usage
-------------------------------------
-Just activate the plugin to see the Wordpress Plugin Framework in action.
+= Project Location =
 
-  ** THIS IS FOR DEMONSTRATION PURPOSES ONLY **
+The WPF-TestPlugin and Wordpress Plugin Framework is currently developed as a Google Code project. A link to the WPF Google
+Code project is provided below.
 
-Currently, this plugin only creates a basic administration page for th WPF-TestPlugin
-which is used to demonstrate the concept of the Wordpress Plugin Framework.
+[Wordpress Plugin Framework Project](http://code.google.com/p/wordpress-plugin-framework/ "Wordpress Plugin Framework Project")
 
+== Installation ==
 
+1. Unzip the archive file.
+2. Verify the name of the unzipped folder to be "wpf-test-plugin".
+3. Upload the "wpf-test-plugin" folder to your Wordpress plugins folder.
+4. Activate the "WPF-TestPlugin" in the Wordpress plugins administration page.
 
-Issues
-------------------------------------
-I am sure that there will be plenty of these soon...
+== Frequently Asked Questions ==
 
+= What is the WPF-TestPlugin and the Wordpress Plugin Framework? =
 
+The Wordpress Plugin Framework (WPF) is a framework used for the development and implementation of Wordpress plugins. The
+WPF-TestPlugin is a simple plugin used to demonstrate the features and capabilities of the WPF.
 
-Revision History
-------------------------------------
-v0.01 - 11/01/2007 - Initial release.
+= Do I need to modify the wordpress-plugin-framework.php file? =
+
+No. You should not need to modify this file. If you have a need for a new feature or if you have discovered and issue with
+the WPF then please let me know about it by posting the issue on the [Wordpress Plugin Framework Forum](http://doubleblackdesign.com/forums/wordpress-plugin-framework/0/ "Wordpress Plugin Framework Forum")
+
+== Screenshots ==
+
+Screenshots are not currently available at this time.
+
+== Change Log ==
+
+* v0.02 (11/07/2007) - Updated to support more option types as well as added ability to update & reset plugin option values. Also added the ability to completely uninstall the plugin directly from the plugin's administration page.
+
+* v0.01 (11/01/2007) - Initial release of the WPF and WPF-TestPlugin.
