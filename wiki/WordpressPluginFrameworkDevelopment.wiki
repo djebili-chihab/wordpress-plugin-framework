@@ -3,19 +3,17 @@
 
 = Current Development =
 
-*Wordpress Plugin Framework - v0.02*
+*Wordpress Plugin Framework - v0.03*
 
-This version improves on v0.01 by adding:
-  * Support for more option types.
-  * Support for updating and resetting option values.
-  * Support for optional "uninstall" of the plugin upon deactivation.
+This version improves on v0.02 by adding:
+  * Details coming soon...
 
 
 = Latest Release =
 
-*The Wordpress Plugin Framework v0.01 has been released.*
+*The Wordpress Plugin Framework v0.02 has been released.*
 
-This first version of the Wordpress Plugin Framework (WPF) mainly focuses on the initial development of the WordpressPluginFramework class as well as the creation and maintenance of the plugin's administration page.
+This release improves upon v0.01 by adding several new enhanced administration features.
 
 == Details ==
 
@@ -27,6 +25,9 @@ This version demonstrates the basic design of the WPF as well as:
   * Initializing the plugin.
   * Creating content blocks for the plugin's administration page.
   * Registering the plugin's administration page with Wordpress.
+  * Updating plugin options.
+  * Resetting plugin options to default values.
+  * Uninstalling the plugin.
 
 Future versions will offer further management and background enhancements as well as the addition of plugin documentation, plugin usage, and plugin widget development strategies.
 
