@@ -704,6 +704,11 @@ class WordpressPluginFramework
       {
          update_option( $optionKey, $requestArray[$optionKey] );
       }
+      
+      // Now display to the user that the plugins have been updated.
+      echo( '<div id="message" class="updated fade">' );
+      echo( '<p>The "' . $this->_pluginTitle . '" plugin options have been updated in the database.</p>' );
+      echo( '</div>' );
    }
    
    /**
@@ -727,6 +732,11 @@ class WordpressPluginFramework
       {
          update_option( $optionKey, $optionValueArray[OPTION_INDEX_VALUE] );
       }
+      
+      // Now display to the user that the plugins have been reset to default values.
+      echo( '<div id="message" class="updated fade">' );
+      echo( '<p>The "' . $this->_pluginTitle . '" plugin options have been reset to default values in the database.</p>' );
+      echo( '</div>' );
    }
 
    /**
