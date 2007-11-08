@@ -5,8 +5,9 @@
 
 *Wordpress Plugin Framework - v0.03*
 
-This version improves on v0.02 by adding:
-  * Details coming soon...
+This release improves on v0.02 by adding:
+  * Further enhancements to the plugin's administration page.
+  * Initial release of the WPF plugin documentation standard.
 
 
 = Latest Release =
