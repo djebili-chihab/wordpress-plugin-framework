@@ -5,7 +5,7 @@
  *     Plugin Name:  01-WPF-TestPlugin
  *     Plugin URI:   http://code.google.com/p/wordpress-plugin-framework/
  *     Description:  A simple test plugin used to demonstrate the WordpressPluginFramework class.
- *     Version:      0.02
+ *     Version:      0.03a
  *     Author:       Keith Huster
  *     Author URI:   http://www.doubleblackdesign.com
  *
@@ -33,23 +33,9 @@
  */
 
 
-
-/**
- * Definitions list for our custom plugin.
- * 
- */
-define( "PLUGIN_TITLE", "Test Plugin for the Wordpress Plugin Framework" );
-define( "PLUGIN_VERSION", "0.02" );
-define( "PLUGIN_SUBFOLDER_NAME", "wpf-test-plugin" );
-define( "PLUGIN_FILE_NAME", "test-plugin" );
-define( "PLUGIN_ADMIN_MENU_TITLE", "Test Plugin" );
-define( "PLUGIN_ADMIN_MENU_PAGE_TITLE", "Test Plugin Page" );
-define( "PLUGIN_ADMIN_MENU_PAGE_SLUG", "test-plugin-options" );
-
-
-
 /**
  * Include the WordpressPluginFramework.
+ *    - NOTE: This will also include the plugin-definitions.php file.
  */
 require_once( "wordpress-plugin-framework.php" ); 
 
@@ -247,7 +233,7 @@ if( !$myTestPlugin  )
   $myTestPlugin->AddOption( OPTION_TYPE_TEXTAREA, 'myTextareaOption', 'Hello! This is an example of a multiline text area.', 'Simple textarea option for your plugin.' );
   $myTestPlugin->AddOption( OPTION_TYPE_PASSWORDBOX, 'myPasswordboxOption', 'password', 'Simple passwordbox option for your plugin.' );
   $myTestPlugin->AddOption( OPTION_TYPE_COMBOBOX, 'myComboboxOption', 'Combo 1', 'Simple combobox option for your plugin.,Combo 1,Combo 2,Combo 3,Combo 4,Combo 5' );
-  $myTestPlugin->Initialize( __FILE__, PLUGIN_TITLE, PLUGIN_VERSION, PLUGIN_SUBFOLDER_NAME, PLUGIN_FILE_NAME );
+  $myTestPlugin->Initialize( __FILE__ );
   
   // Add all of the custom content blocks to your plugin's administration page then register your
   // plugin's administration page with the Wordpress core.
@@ -264,7 +250,7 @@ if( !$myTestPlugin  )
   $myTestPlugin->AddAdministrationPageBlock( 'block-options-listed', 'Plugin Options Listed', CONTENT_BLOCK_TYPE_MAIN, array($myTestPlugin, 'HTML_DisplayPluginOptionsListedBlock') );
   $myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
   $myTestPlugin->AddAdministrationPageBlock( 'block-hello-again', 'Hello Again', CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloAgainBlock') );
-  $myTestPlugin->RegisterAdministrationPage( PLUGIN_ADMIN_MENU_TITLE, PLUGIN_ADMIN_MENU_PAGE_TITLE, PLUGIN_ADMIN_MENU_PAGE_SLUG, PARENT_MENU_PLUGINS, RIGHTS_REQUIRED_ADMIN );
+  $myTestPlugin->RegisterAdministrationPage( PARENT_MENU_PLUGINS, RIGHTS_REQUIRED_ADMIN );
 }
 
 ?>

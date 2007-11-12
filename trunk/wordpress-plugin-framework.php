@@ -24,6 +24,11 @@
  */
 
 
+/**
+ * Include the standard WPF Plugin Definitions file.
+ */
+require_once( "wpf-plugin-definitions.php" ); 
+
 
 /**
  * Definitions list for the WordpressPluginFramework.
@@ -190,10 +195,6 @@ class WordpressPluginFramework
     * activation hook with the Wordpress core.
 	 *
 	 * @param string    $pluginFile          Full path to the plugin's file.
-	 * @param string    $pluginTitle         Title of this plugin.
-	 * @param string    $pluginVersion       Version of this plugin.	 
-	 * @param string    $pluginSubfolderName Name of the plugin's subfolder.
-	 * @param string    $pluginFileName      Name of the plugin's main file.
 	 * 
     * @return void     None.  	 
 	 * 
@@ -201,14 +202,14 @@ class WordpressPluginFramework
     * @since {WP 2.3}
 	 * @author Keith Huster
 	 */
-   function Initialize( $pluginFile, $pluginTitle, $pluginVersion, $pluginSubfolderName, $pluginFileName )
+   function Initialize( $pluginFile )
 	{
 	   // Store the relevant information concerning this plugin.
-      $this->_pluginTitle = $pluginTitle;
-      $this->_pluginVersion = $pluginVersion;
-      $this->_pluginSubfolderName = $pluginSubfolderName;
-      $this->_pluginFileName = $pluginFileName;
-	   
+      $this->_pluginTitle = PLUGIN_TITLE;
+      $this->_pluginVersion = PLUGIN_VERSION;
+      $this->_pluginSubfolderName = PLUGIN_SUBFOLDER_NAME;
+      $this->_pluginFileName = PLUGIN_FILE_NAME;
+      
       // Register the hooks required to properly handle activation of this plugin.
       register_activation_hook( $pluginFile, array( $this, '_RegisterPluginOptions' ) );
    }
@@ -225,9 +226,6 @@ class WordpressPluginFramework
     * hook. This hook allows the plugin's administration paege to be processed as any standard Wordpress
     * administration page (such as the dashboard).
 	 *
-	 * @param string    $menuTitle           Title to be displayed on the plugin's administration menu.
-	 * @param string    $pageTitle           Title to be displayed on the plugin's administration page.
-	 * @param string    $pageSlug            URL slug of the plugin's administration page.
 	 * @param string    $parentMenu          Parent menu of the plugin's administration menu.
 	 * @param string    $minimumAccessLevel  Minimum user access rights required to access the plugin's administration page.
 	 * 
@@ -237,15 +235,15 @@ class WordpressPluginFramework
     * @since {WP 2.3}
 	 * @author Keith Huster
 	 */
-	function RegisterAdministrationPage( $menuTitle, $pageTitle, $pageSlug, $parentMenu, $minimumAccessLevel )
+	function RegisterAdministrationPage( $parentMenu, $minimumAccessLevel )
    {
       // Load all of the class variables required by the addAdministrationPage() function.
-      $this->_pluginAdminMenuTitle = $menuTitle;
-      $this->_pluginAdminMenuPageTitle = $pageTitle;
-      $this->_pluginAdminMenuPageSlug = $pageSlug;
+      $this->_pluginAdminMenuTitle = PLUGIN_ADMIN_MENU_TITLE;
+      $this->_pluginAdminMenuPageTitle = PLUGIN_ADMIN_MENU_PAGE_TITLE;
+      $this->_pluginAdminMenuPageSlug = PLUGIN_ADMIN_MENU_PAGE_SLUG;
       $this->_pluginAdminMenuParentMenu = $parentMenu;
       $this->_pluginAdminMenuMinimumAccessLevel = $minimumAccessLevel;
-    
+      
       // Wordpress hook for adding plugin admininistration menus.
       add_action( 'admin_menu', array( $this, '_AddAdministrationPage' ) );
 	}
