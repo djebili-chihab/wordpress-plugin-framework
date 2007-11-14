@@ -25,59 +25,10 @@
 
 
 /**
- * Include the standard WPF Plugin Definitions file.
- */
-require_once( "wpf-plugin-definitions.php" ); 
-
-
-/**
- * Definitions list for the WordpressPluginFramework.
- * 
- */
-define("PLUGIN_FRAMEWORK_VERSION", "0.02");
-// Top level administration menus.
-define("PARENT_MENU_DASHBOARD", "index.php");
-define("PARENT_MENU_WRITE", "post-new.php");
-define("PARENT_MENU_MANAGE", "edit.php");
-define("PARENT_MENU_COMMENTS", "edit-comments.php");
-define("PARENT_MENU_BLOGROLL", "link-manager.php");
-define("PARENT_MENU_PRESENTATION", "themes.php");
-define("PARENT_MENU_PLUGINS", "plugins.php");
-define("PARENT_MENU_USERS", "users.php");
-define("PARENT_MENU_OPTIONS", "options-general.php");
-// Required access rights levels.
-//TODO:Add other options for user access (need to research).
-define("RIGHTS_REQUIRED_ADMIN", 8);
-// Types of administration page content blocks.
-define("CONTENT_BLOCK_TYPE_MAIN", "content-block-type-main");
-define("CONTENT_BLOCK_TYPE_SIDEBAR", "content-block-type-sidebar");
-// Indices for the parameters associated with content blocks.
-define("CONTENT_BLOCK_INDEX_TITLE", 0);
-define("CONTENT_BLOCK_INDEX_TYPE", 1);
-define("CONTENT_BLOCK_INDEX_FUNCTION", 2);
-define("CONTENT_BLOCK_INDEX_FUNCTION_CLASS", 0);
-define("CONTENT_BLOCK_INDEX_FUNCTION_NAME", 1);
-// General option definitions.
-define("OPTION_PARAMETER_NOT_FOUND", "Not found...");
-// Indices for the parameters associated with options.
-define("OPTION_INDEX_VALUE", 0);
-define("OPTION_INDEX_DESCRIPTION", 1);
-define("OPTION_INDEX_TYPE", 2);
-// Types of options to be displayed on the administration page.
-//TODO:Add more option types (combobox, radio buttons, etc...).
-define("OPTION_TYPE_TEXTBOX", "text");
-define("OPTION_TYPE_TEXTAREA", "textarea");
-define("OPTION_TYPE_CHECKBOX", "checkbox");
-define("CHECKBOX_UNCHECKED", "");
-define("CHECKBOX_CHECKED", "on");
-define("OPTION_TYPE_RADIOBUTTONS", "radio");
-define("OPTION_TYPE_PASSWORDBOX", "password");
-define("OPTION_TYPE_COMBOBOX", "combobox");
-
-
-
-/**
  * WordpressPluginFramework - Base class for Wordpress plugins.
+ *
+ * NOTE: This class must be prefixed with the name of your plugin in order to prevent class duplication errors
+ *       since PHP does not have a concept of namespaces.
  *
  * This class forms a base class for other Wordpress plugins to derive from in order to provide
  * a more standard way of developing plugins.
@@ -86,17 +37,105 @@ define("OPTION_TYPE_COMBOBOX", "combobox");
  * @since {WP 2.3} 
  * @author Keith Huster
  */
-class WordpressPluginFramework
+class TestPlugin_WordpressPluginFramework
 {
+   // ---------------------------------------------------------------------------
+   //    ---- START: Class constants to be updated by plugin developer. ----
+   // ---------------------------------------------------------------------------
+   
+   // PLUGIN_TITLE - Title of the plugin utilizing the WPF. 
+   //   - You may input any string you wish for the title of your plugin.
+   //   - eg. "Test plugin for the WPF"
+   var $PLUGIN_TITLE = "Test Plugin for the Wordpress Plugin Framework";
+   
+   // PLUGIN_VERSION - Version of the plugin utilizing the WPF. 
+   //   - You may input a string in the following format "#.##".
+   //   - eg. "1.01"
+   var $PLUGIN_VERSION = "0.02";
+   
+   // PLUGIN_SUBFOLDER_NAME - Name of the folder containing this plugin. 
+   //   - You may input any valid folder name string (please seperate words with "-" characters).
+   //   - eg. "wpf-test-plugin"
+   var $PLUGIN_SUBFOLDER_NAME = "wpf-test-plugin";
+   
+   // PLUGIN_FILE_NAME - Name of the file containing this plugin. 
+   //   - You may input any valid file name string (please seperate words with "-" characters).
+   //   - eg. "test-plugin"
+   var $PLUGIN_FILE_NAME = "test-plugin";
+   
+   // PLUGIN_ADMIN_MENU_TITLE - Name of the plugin's administration menu. 
+   //   - You may input any valid string (please try to stay less than 30 characters for readability).
+   //   - eg. "Test Plugin"
+   var $PLUGIN_ADMIN_MENU_TITLE = "Test Plugin";
+   
+   // PLUGIN_ADMIN_MENU_PAGE_TITLE - Browser title displayed for the plugin's administration webpage. 
+   //   - You may input any valid string (please try to stay less than 30 characters for readability).
+   //   - eg. "Test Plugin Options"
+   var $PLUGIN_ADMIN_MENU_PAGE_TITLE = "Test Plugin Options";
+   
+   // PLUGIN_ADMIN_MENU_PAGE_SLUG - URI slug displayed for the plugin's administration webpage. 
+   //   - You may input any valid URI string (please seperate words with "-" characters).
+   //   - eg. "test-plugin-options"
+   var $PLUGIN_ADMIN_MENU_PAGE_SLUG = "test-plugin-options";
+   
+   // ---------------------------------------------------------------------------
+   //    ---- END: Class constants to be updated by plugin developer. ----
+   //  ---- YOU SHOULD NOT MODIFY ANY CODE IN THIS FILE AFTER THIS LINE. ----
+   // ---------------------------------------------------------------------------
+   
+   
+   
+   // ---------------------------------------------------------------------------
+   // Class constants required by the Wordpress Plugin Framework.
+   //    - DO NOT MODIFY THESE CONSTANTS!!!
+   // ---------------------------------------------------------------------------
+   
+   var $PLUGIN_FRAMEWORK_VERSION = "0.02";
+   // Top level administration menus.
+   var $PARENT_MENU_DASHBOARD = "index.php";
+   var $PARENT_MENU_WRITE = "post-new.php";
+   var $PARENT_MENU_MANAGE = "edit.php";
+   var $PARENT_MENU_COMMENTS = "edit-comments.php";
+   var $PARENT_MENU_BLOGROLL = "link-manager.php";
+   var $PARENT_MENU_PRESENTATION = "themes.php";
+   var $PARENT_MENU_PLUGINS = "plugins.php";
+   var $PARENT_MENU_USERS = "users.php";
+   var $PARENT_MENU_OPTIONS = "options-general.php";
+   // Required access rights levels.
+   //TODO:Add other options for user access (need to research).
+   var $RIGHTS_REQUIRED_ADMIN = 8;
+   // Types of administration page content blocks.
+   var $CONTENT_BLOCK_TYPE_MAIN = "content-block-type-main";
+   var $CONTENT_BLOCK_TYPE_SIDEBAR = "content-block-type-sidebar";
+   // Indices for the parameters associated with content blocks.
+   var $CONTENT_BLOCK_INDEX_TITLE = 0;
+   var $CONTENT_BLOCK_INDEX_TYPE = 1;
+   var $CONTENT_BLOCK_INDEX_FUNCTION = 2;
+   var $CONTENT_BLOCK_INDEX_FUNCTION_CLASS = 0;
+   var $CONTENT_BLOCK_INDEX_FUNCTION_NAME = 1;
+   // General option definitions.
+   var $OPTION_PARAMETER_NOT_FOUND = "Not found...";
+   // Indices for the parameters associated with options.
+   var $OPTION_INDEX_VALUE = 0;
+   var $OPTION_INDEX_DESCRIPTION = 1;
+   var $OPTION_INDEX_TYPE = 2;
+   // Types of options to be displayed on the administration page.
+   //TODO:Add more option types (combobox, radio buttons, etc...).
+   var $OPTION_TYPE_TEXTBOX = "text";
+   var $OPTION_TYPE_TEXTAREA = "textarea";
+   var $OPTION_TYPE_CHECKBOX = "checkbox";
+   var $CHECKBOX_UNCHECKED = "";
+   var $CHECKBOX_CHECKED = "on";
+   var $OPTION_TYPE_RADIOBUTTONS = "radio";
+   var $OPTION_TYPE_PASSWORDBOX = "password";
+   var $OPTION_TYPE_COMBOBOX = "combobox";
+   
+   
+   
    // ---------------------------------------------------------------------------
    // Class variables required by the Wordpress Plugin Framework.
    // ---------------------------------------------------------------------------
   
-   /**
-    * @var string   Version of the WordpressPluginFramework class.
-    */
-   var $_pluginFrameworkVersion = PLUGIN_FRAMEWORK_VERSION;
-	
 	/**
 	 * @var string   Title of the plugin derived from WordpressPluginFramework class.
 	 */
@@ -137,7 +176,7 @@ class WordpressPluginFramework
 	 * @var string   Minimum access level required to access the plugin's administration submenu.
 	 *   Note: Valid values are defined by "RIGHTS_REQUIRED_xxx" at the top of this file.
 	 */
-	var $_pluginAdminMenuMinimumAccessLevel = RIGHTS_REQUIRED_ADMIN;
+	var $_pluginAdminMenuMinimumAccessLevel = "";
 		
 	/**
 	 * @var string   URL slug of the plugin's administration page.
@@ -205,10 +244,10 @@ class WordpressPluginFramework
    function Initialize( $pluginFile )
 	{
 	   // Store the relevant information concerning this plugin.
-      $this->_pluginTitle = PLUGIN_TITLE;
-      $this->_pluginVersion = PLUGIN_VERSION;
-      $this->_pluginSubfolderName = PLUGIN_SUBFOLDER_NAME;
-      $this->_pluginFileName = PLUGIN_FILE_NAME;
+      $this->_pluginTitle = $this->PLUGIN_TITLE;
+      $this->_pluginVersion = $this->PLUGIN_VERSION;
+      $this->_pluginSubfolderName = $this->PLUGIN_SUBFOLDER_NAME;
+      $this->_pluginFileName = $this->PLUGIN_FILE_NAME;
       
       // Register the hooks required to properly handle activation of this plugin.
       register_activation_hook( $pluginFile, array( $this, '_RegisterPluginOptions' ) );
@@ -238,9 +277,9 @@ class WordpressPluginFramework
 	function RegisterAdministrationPage( $parentMenu, $minimumAccessLevel )
    {
       // Load all of the class variables required by the addAdministrationPage() function.
-      $this->_pluginAdminMenuTitle = PLUGIN_ADMIN_MENU_TITLE;
-      $this->_pluginAdminMenuPageTitle = PLUGIN_ADMIN_MENU_PAGE_TITLE;
-      $this->_pluginAdminMenuPageSlug = PLUGIN_ADMIN_MENU_PAGE_SLUG;
+      $this->_pluginAdminMenuTitle = $this->PLUGIN_ADMIN_MENU_TITLE;
+      $this->_pluginAdminMenuPageTitle = $this->PLUGIN_ADMIN_MENU_PAGE_TITLE;
+      $this->_pluginAdminMenuPageSlug = $this->PLUGIN_ADMIN_MENU_PAGE_SLUG;
       $this->_pluginAdminMenuParentMenu = $parentMenu;
       $this->_pluginAdminMenuMinimumAccessLevel = $minimumAccessLevel;
       
@@ -316,39 +355,39 @@ class WordpressPluginFramework
       {
          foreach( $this->_pluginAdminMenuBlockArray AS $blockKey=>$blockValue )
          {
-            if( $blockValue[CONTENT_BLOCK_INDEX_TYPE] == $blockType )
+            if( $blockValue[$this->CONTENT_BLOCK_INDEX_TYPE] == $blockType )
             {
                switch( $blockType )
                {
-                  case CONTENT_BLOCK_TYPE_SIDEBAR:
+                  case $this->CONTENT_BLOCK_TYPE_SIDEBAR:
                      // Create the markup necessary to display a SIDEBAR area content block.
                      ?>
                      <fieldset id="<?php echo( $blockKey ); ?>" class="dbx-box">
-                        <h3 class="dbx-handle"><?php echo( $blockValue[CONTENT_BLOCK_INDEX_TITLE] ); ?></h3>
+                        <h3 class="dbx-handle"><?php echo( $blockValue[$this->CONTENT_BLOCK_INDEX_TITLE] ); ?></h3>
                         <div class="dbx-content">
                            <?php
                            // Display the actual content contained within the block.
-                           $blockClass = $blockValue[CONTENT_BLOCK_INDEX_FUNCTION][CONTENT_BLOCK_INDEX_FUNCTION_CLASS];
-                           $blockFunction = $blockValue[CONTENT_BLOCK_INDEX_FUNCTION][CONTENT_BLOCK_INDEX_FUNCTION_NAME];
+                           $blockClass = $blockValue[$this->CONTENT_BLOCK_INDEX_FUNCTION][$this->CONTENT_BLOCK_INDEX_FUNCTION_CLASS];
+                           $blockFunction = $blockValue[$this->CONTENT_BLOCK_INDEX_FUNCTION][$this->CONTENT_BLOCK_INDEX_FUNCTION_NAME];
                            $blockClass->$blockFunction();
 				               ?>
       				      </div>
 				         </fieldset>
 				         <?php
                      break;
-                  case CONTENT_BLOCK_TYPE_MAIN:
+                  case $this->CONTENT_BLOCK_TYPE_MAIN:
                      // Create the markup necessary to display a MAIN area content block.
                      ?>
                      <fieldset id="<?php echo( $blockKey ); ?>" class="dbx-box">
                         <div class="dbx-h-andle-wrapper">
-                           <h3 class="dbx-handle"><?php echo( $blockValue[CONTENT_BLOCK_INDEX_TITLE] ); ?></h3>
+                           <h3 class="dbx-handle"><?php echo( $blockValue[$this->CONTENT_BLOCK_INDEX_TITLE] ); ?></h3>
                         </div>
                         <div class="dbx-c-ontent-wrapper">
                            <div class="dbx-content">
                               <?php
                               // Display the actual content contained within the block.
-                              $blockClass = $blockValue[CONTENT_BLOCK_INDEX_FUNCTION][CONTENT_BLOCK_INDEX_FUNCTION_CLASS];
-                              $blockFunction = $blockValue[CONTENT_BLOCK_INDEX_FUNCTION][CONTENT_BLOCK_INDEX_FUNCTION_NAME];
+                              $blockClass = $blockValue[$this->CONTENT_BLOCK_INDEX_FUNCTION][$this->CONTENT_BLOCK_INDEX_FUNCTION_CLASS];
+                              $blockFunction = $blockValue[$this->CONTENT_BLOCK_INDEX_FUNCTION][$this->CONTENT_BLOCK_INDEX_FUNCTION_NAME];
                               $blockClass->$blockFunction();
       				            ?>
       				         </div>
@@ -483,7 +522,7 @@ class WordpressPluginFramework
                      <div id="sidebarBlocks" class="dbx-group">
                         <?php
                         // Load the Sidebar blocks first...
-                        $this->_DisplayAdministrationPageBlocks( CONTENT_BLOCK_TYPE_SIDEBAR );
+                        $this->_DisplayAdministrationPageBlocks( $this->CONTENT_BLOCK_TYPE_SIDEBAR );
                         ?>
                      </div>
                   </div>
@@ -493,7 +532,7 @@ class WordpressPluginFramework
                         <div class="dbx-b-ox-wrapper">
                            <?php
                            // Then load the main content blocks...
-                           $this->_DisplayAdministrationPageBlocks( CONTENT_BLOCK_TYPE_MAIN );
+                           $this->_DisplayAdministrationPageBlocks( $this->CONTENT_BLOCK_TYPE_MAIN );
                            ?>
                         </div>
                      </div>
@@ -600,7 +639,7 @@ class WordpressPluginFramework
             
             if( $optionFound == false )
             {
-               update_option( $optionKey, $optionValue[OPTION_INDEX_VALUE] );
+               update_option( $optionKey, $optionValue[$this->OPTION_INDEX_VALUE] );
             }
 			}
       }
@@ -728,7 +767,7 @@ class WordpressPluginFramework
       // Update the plugin's options using the default values from the options array.
       foreach( $this->_pluginOptionsArray AS $optionKey => $optionValueArray )
       {
-         update_option( $optionKey, $optionValueArray[OPTION_INDEX_VALUE] );
+         update_option( $optionKey, $optionValueArray[$this->OPTION_INDEX_VALUE] );
       }
       
       // Now display to the user that the plugins have been reset to default values.
@@ -774,11 +813,11 @@ class WordpressPluginFramework
 	 */
    function GetOptionType( $optionName )
    {
-      $optionDescription = OPTION_PARAMETER_NOT_FOUND;
+      $optionDescription = $this->OPTION_PARAMETER_NOT_FOUND;
       
       if( array_key_exists( $optionName, $this->_pluginOptionsArray ) )
       {
-         $optionDescription = $this->_pluginOptionsArray[$optionName][OPTION_INDEX_TYPE];
+         $optionDescription = $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_TYPE];
       }
     
       return $optionDescription;
@@ -801,11 +840,11 @@ class WordpressPluginFramework
 	 */
    function GetOptionDescription( $optionName )
    {
-      $optionDescription = OPTION_PARAMETER_NOT_FOUND;
+      $optionDescription = $this->OPTION_PARAMETER_NOT_FOUND;
       
       if( array_key_exists( $optionName, $this->_pluginOptionsArray ) )
       {
-         $optionDescription = $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION];
+         $optionDescription = $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_DESCRIPTION];
       }
     
       return $optionDescription;
@@ -831,32 +870,32 @@ class WordpressPluginFramework
     
       if( array_key_exists( $optionName, $this->_pluginOptionsArray ) )
       {
-         switch( $this->_pluginOptionsArray[$optionName][OPTION_INDEX_TYPE] )
+         switch( $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_TYPE] )
          {
-            case OPTION_TYPE_TEXTBOX:
+            case $this->OPTION_TYPE_TEXTBOX:
                // Generate the markup required to display an XHTML compliant textbox.
                $optionMarkup = '<label for="' . $optionName . '">';
                $optionMarkup .= '<input type="text" name="' . $optionName . '" value="' . get_option( $optionName ) . '" /> ';
-               $optionMarkup .= $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION];
+               $optionMarkup .= $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_DESCRIPTION];
                $optionMarkup .= '</label>';
                break;
-            case OPTION_TYPE_TEXTAREA:
+            case $this->OPTION_TYPE_TEXTAREA:
                // Generate the markup required to display an XHTML compliant textarea.
-               $optionMarkup = $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] . '<br />';
+               $optionMarkup = $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_DESCRIPTION] . '<br />';
                $optionMarkup .= '<textarea name="' . $optionName . '" cols="50" rows="10">' . get_option( $optionName ) . '</textarea> ';
                break;
-            case OPTION_TYPE_CHECKBOX:
+            case $this->OPTION_TYPE_CHECKBOX:
                // Generate the markup required to display an XHTML compliant checkbox.
                $optionMarkup = '<label for="' . $optionName . '">';
                $checkBoxValue = ( get_option( $optionName ) == true ) ? 'checked="checked"' : '';
 		         $optionMarkup .= '<input type="checkbox" name="' . $optionName . '" ' . $checkBoxValue . ' /> ';
-			      $optionMarkup .= $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION];
+			      $optionMarkup .= $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_DESCRIPTION];
 		         $optionMarkup .= '</label>';
                break;
-            case OPTION_TYPE_RADIOBUTTONS:
+            case $this->OPTION_TYPE_RADIOBUTTONS:
                // Split the comma delimited option description and values for the radio buttons.
                $optionIdCount = 0;
-               $valuesArray = split( ',', $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] );
+               $valuesArray = split( ',', $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_DESCRIPTION] );
                if( is_array( $valuesArray ) )
                {
                   // Loop through each of the comma delimited values to process the radiobuttons.
@@ -883,15 +922,15 @@ class WordpressPluginFramework
                   }
                }
                break;
-            case OPTION_TYPE_PASSWORDBOX:
+            case $this->OPTION_TYPE_PASSWORDBOX:
                // Generate the markup required to display an XHTML compliant passwordbox.
-               $optionMarkup = '<label for="' . $optionName . '">' . $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] . ' </label>';
+               $optionMarkup = '<label for="' . $optionName . '">' . $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_DESCRIPTION] . ' </label>';
                $optionMarkup .= '<input type="password" name="' . $optionName . '" value="' . get_option( $optionName ) . '" /> ';
                break;
-            case OPTION_TYPE_COMBOBOX:
+            case $this->OPTION_TYPE_COMBOBOX:
                // Split the comma delimited option description and values for the combobox.
                $optionIdCount = 0;
-               $valuesArray = split( ',', $this->_pluginOptionsArray[$optionName][OPTION_INDEX_DESCRIPTION] );
+               $valuesArray = split( ',', $this->_pluginOptionsArray[$optionName][$this->OPTION_INDEX_DESCRIPTION] );
                if( is_array( $valuesArray ) )
                {
                   // Loop through each of the comma delimited values to process the combobox values.
