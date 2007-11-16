@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=husterk%
 Tags: wordpress, plugin framework, plugin development
 Requires at least: 2.3
 Tested up to: 2.3.1
-Stable tag: v0.02
+Stable tag: 0.03a
 
 The Wordpress Plugin Framework plugin is a simple plugin used to demonstrate the capabilities of the Wordpress Plugin Framework (WPF) class.
 
