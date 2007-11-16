@@ -2,7 +2,7 @@
 /**
  *     ---------------       DO NOT DELETE!!!     ---------------
  * 
- *     Plugin Name:  DBD-WPFTestPlugin
+ *     Plugin Name:  Wordpress Plugin Framework
  *     Plugin URI:   http://www.doubleblackdesign.com/categories/wordpress-plugins/wordpress-plugin-framework/
  *     Description:  A simple test plugin used to demonstrate the WordpressPluginFramework class.
  *     Version:      0.03a

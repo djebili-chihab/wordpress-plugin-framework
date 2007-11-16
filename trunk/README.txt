@@ -1,4 +1,4 @@
-=== DBD-WPFTestPlugin ===
+=== Wordpress Plugin Framework ===
 Contributors: husterk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=husterk%40doubleblackdesign%2ecom&item_name=Wordpress%20Plugin%20Framework&no_shipping=0&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: wordpress, plugin framework, plugin development
@@ -6,16 +6,16 @@ Requires at least: 2.3
 Tested up to: 2.3.1
 Stable tag: v0.02
 
-The DBD-WPFTestPlugin is a simple plugin used to demonstrate the capabilities of the Wordpress Plugin Framework (WPF).
+The Wordpress Plugin Framework plugin is a simple plugin used to demonstrate the capabilities of the Wordpress Plugin Framework (WPF) class.
 
 == Description ==
 
-The DBD-WPFTestPlugin is used as a playground for demonstrating the features and capabilities of the Wordpress Plugin
-Framework (WPF). The WPF is a PHP class that is used to provide a framework for the development of Wordpress plugins.
+The Wordpress Plugin Framework plugin is used as a playground for demonstrating the features and capabilities of the Wordpress Plugin
+Framework (WPF) class. The WPF is a PHP class that is used to provide a framework for the development of Wordpress plugins.
 This framework helps to generalize and simplify plugin design while also helping plugins adhere to a common administration
 and usage standard.
 
-Currently, the WPF-TestPlugin demonstrates the features of the WPF listed below.
+Currently, the Wordpress Plugin Framework plugin demonstrates the features of the WPF listed below.
 
 1. Deriving a plugin from the WordpressPluginFramework base class.
 2. Creating options for the plugin.
@@ -27,19 +27,19 @@ Currently, the WPF-TestPlugin demonstrates the features of the WPF listed below.
 
 = License =
 
-This DBD-WPFTestPlugin and Wordpress Plugin Framework are being developed under the GNU General Public License, version 2.
+This Wordpress Plugin Framework plugin and Wordpress Plugin Framework class are being developed under the GNU General Public License, version 2.
 
 [GNU General Public License, version 2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html "GNU General Public License, version 2")
 
 = Support WPF Development =
 
-Help support development of the DBD-WPFTestPlugin and Wordpress Plugin Framework by making a donation.
+Help support development of the Wordpress Plugin Framework plugin and Wordpress Plugin Framework by making a donation.
 
 [Donate to Double Black Design](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=husterk%40doubleblackdesign%2ecom&item_name=Wordpress%20Plugin%20Framework&no_shipping=0&no_note=1&tax=0&currency_code=USD&lc=US&bn=PP%2dDonationsBF&charset=UTF%2d8 "Donate to Double Black Design")
 
 = Project Location =
 
-The DBD-WPFTestPlugin and Wordpress Plugin Framework projects are currently developed as a Google Code project. A link to the WPF Google
+The Wordpress Plugin Framework plugin and Wordpress Plugin Framework projects are currently developed as a Google Code project. A link to the WPF Google
 Code project is provided below.
 
 [Wordpress Plugin Framework Project](http://code.google.com/p/wordpress-plugin-framework/ "Wordpress Plugin Framework Project")
@@ -49,14 +49,14 @@ Code project is provided below.
 1. Unzip the archive file.
 2. Verify the name of the unzipped folder to be "wpf-test-plugin".
 3. Upload the "wpf-test-plugin" folder to your Wordpress plugins folder.
-4. Activate the "DBD-WPFTestPlugin" in the Wordpress plugins administration page.
+4. Activate the "Wordpress Plugin Framework" in the Wordpress plugins administration page.
 
 == Frequently Asked Questions ==
 
-= What is the WPF-TestPlugin and the Wordpress Plugin Framework? =
+= What is the Wordpress Plugin Framework plugin and the Wordpress Plugin Framework class? =
 
-The Wordpress Plugin Framework (WPF) is a framework used for the development and implementation of Wordpress plugins. The
-WPF-TestPlugin is a simple plugin used to demonstrate the features and capabilities of the WPF.
+The Wordpress Plugin Framework (WPF) class is a framework used for the development and implementation of Wordpress plugins. The
+Wordpress Plugin Framework plugin is a simple plugin used to demonstrate the features and capabilities of the WPF.
 
 = Do I need to modify the wordpress-plugin-framework.php file? =
 

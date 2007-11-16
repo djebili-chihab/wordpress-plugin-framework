@@ -51,7 +51,7 @@ class TestPlugin_WordpressPluginFramework
    // PLUGIN_VERSION - Version of the plugin utilizing the WPF. 
    //   - You may input a string in the following format "#.##".
    //   - eg. "1.01"
-   var $PLUGIN_VERSION = "0.02";
+   var $PLUGIN_VERSION = "0.03a";
    
    // PLUGIN_SUBFOLDER_NAME - Name of the folder containing this plugin. 
    //   - You may input any valid folder name string (please seperate words with "-" characters).
@@ -66,17 +66,17 @@ class TestPlugin_WordpressPluginFramework
    // PLUGIN_ADMIN_MENU_TITLE - Name of the plugin's administration menu. 
    //   - You may input any valid string (please try to stay less than 30 characters for readability).
    //   - eg. "Test Plugin"
-   var $PLUGIN_ADMIN_MENU_TITLE = "Test Plugin";
+   var $PLUGIN_ADMIN_MENU_TITLE = "Wordpress Plugin Framework";
    
    // PLUGIN_ADMIN_MENU_PAGE_TITLE - Browser title displayed for the plugin's administration webpage. 
    //   - You may input any valid string (please try to stay less than 30 characters for readability).
    //   - eg. "Test Plugin Options"
-   var $PLUGIN_ADMIN_MENU_PAGE_TITLE = "Test Plugin Options";
+   var $PLUGIN_ADMIN_MENU_PAGE_TITLE = "Wordpress Plugin Framework Options";
    
    // PLUGIN_ADMIN_MENU_PAGE_SLUG - URI slug displayed for the plugin's administration webpage. 
    //   - You may input any valid URI string (please seperate words with "-" characters).
    //   - eg. "test-plugin-options"
-   var $PLUGIN_ADMIN_MENU_PAGE_SLUG = "test-plugin-options";
+   var $PLUGIN_ADMIN_MENU_PAGE_SLUG = "wordpress-plugin-framework-options";
    
    // ---------------------------------------------------------------------------
    //    ---- END: Class constants to be updated by plugin developer. ----
