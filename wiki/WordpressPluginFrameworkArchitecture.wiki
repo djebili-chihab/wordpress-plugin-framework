@@ -25,17 +25,16 @@ The current options available for the WPF installation architecture are listed b
 
 The following subsections need to be filled in to provide information about the advantages and disadvantages of each architecture based on the criteria listed above.
 
-*NOTE:* I have included one example in each table to use as a refernce for your additional information. Please delete the example after new data has been added to the table.
-
 == Original Architecture ==
 
   || *Criteria Type* || *Advantage / Disadvantage* || *Data* ||
-  || Usability || Advantage || Single class to implement. ||
+  || Performance || Disadvantage || All functionality contained within every instance. ||
 
 == Object-Based Architecture ==
 
   || *Criteria Type* || *Advantage / Disadvantage* || *Data* ||
-  || Usability || Advantage || More flexible design. ||
+  || Usability || Advantage || Lower barrier for entry, i.e. closer resemblence to real world. ||
+
 
 = WPF Installation Architecture Reviews =
 
@@ -44,9 +43,9 @@ The following subsections need to be filled in to provide information about the 
 == Per-Plugin WPF Architecture ==
 
   || *Criteria Type* || *Advantage / Disadvantage* || *Data* ||
-  || Usability || Advantage || Less chance of breaking existing plugins with new WPF releases. ||
+  || Usability || Disadvantage || Requires the class(es) to be uniquely named. ||
 
 == Common WPF Installation Architecture ==
 
   || *Criteria Type* || *Advantage / Disadvantage* || *Data* ||
-  || Usability || Advantage || Allows for ease of plugin updates by use of common code. ||
+  || Maintainability || Disadvantage || Requires updates to remain backward compatible. ||
