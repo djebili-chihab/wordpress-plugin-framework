@@ -5,6 +5,9 @@
 
 The Wordpress Plugin Framework (WPF) is a PHP class that is used to provide a framework for the development of Wordpress plugins. The overall intention of the WPF is to generalize and simplify plugin design while also helping plugins adhere to a common administration and usage standard. This manual will help guide you in the development and implementation of a Wordpress plugin derived from the WPF base class.
 
+
+
+
 = Getting Started =
 
 This section will provide a strategy for the creation of a plugin based from the WPF.
@@ -64,7 +67,10 @@ You have now successfully customized the *wordpress-plugin-framework.php* file f
   * _Release a new version of your plugin_ - You will need to modify the *$PLUGIN_VERSION* to reflect the new appropriate plugin version number.
   * _Upgrade your plugin to a new release of the WPF_ - You will need to follow the guidelines specified for the new release of the WPF.
 
-= Plugin Implementation =
+
+
+
+= Basic Plugin Implementation =
 
 You are now ready to get the ball rolling on your plugin development. However, before we can deep dive the usage of the WPF you will need to perform a few standard Wordpress plugin development steps first.
 
@@ -107,5 +113,11 @@ Every Wordpress plugin is required to contain a valid Wordpress plugin header se
  MORE INFO COMING SOON...
 
 == Registering the Plugin Administration Page ==
+
+ MORE INFO COMING SOON...
+
+
+
+= Testing Your Plugin =
 
  MORE INFO COMING SOON...
