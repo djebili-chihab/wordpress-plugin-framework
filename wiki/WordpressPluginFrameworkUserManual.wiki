@@ -61,7 +61,7 @@ So for our example plugin design we will need to do the following:
 
 You have now successfully customized the *wordpress-plugin-framework.php* file for your plugin. From this point forward, you will not need to modify this file unless you perform one of the following tasks.
 
-  * *Release a new version of your plugin* - You will need to modify the *$PLUGIN_VERSION* to reflect the new appropriate plugin version number.
-  * *Upgrade your plugin to a new release of the WPF* - You will need to follow the guidelines specified for the new release of the WPF.
+  * _Release a new version of your plugin_ - You will need to modify the *$PLUGIN_VERSION* to reflect the new appropriate plugin version number.
+  * _Upgrade your plugin to a new release of the WPF_ - You will need to follow the guidelines specified for the new release of the WPF.
 
- *MORE INFO COMING SOON...*
+*MORE INFO COMING SOON...*
