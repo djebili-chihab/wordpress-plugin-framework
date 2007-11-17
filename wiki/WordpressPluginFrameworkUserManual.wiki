@@ -95,21 +95,21 @@ Before you can begin developing your plugin's class you will need to include the
 So for our example plugin design we will need to do the following:
   # Open the *my-test-plugin.php* file and add the following code just below the plugin header.
   
- {{{
- require_once( "wordpress-plugin-framework.php" );` just below the plugin header.
- }}}
+{{{
+require_once( "wordpress-plugin-framework.php" );` just below the plugin header.
+}}}
 
 Now that the WPF is included in the project you can safely begin development of the plugin class. The first step in the class development is to derive your plugin class from the WPF base class (i.e. the class that was previously customized for this plugin).
 
 So for our example plugin design we will need to do the following:
   # Add the following lines of code to the plugin file.
 
- {{{
- class MyTestPlugin extends MyTestPlugin_WordpressPluginFramework
- {
-   // Add class specific code here...
- }
- }}}
+{{{
+class MyTestPlugin extends MyTestPlugin_WordpressPluginFramework
+{
+  // Add class specific code here...
+}
+}}}
 
 This step completes the creation of a plugin derived from the WPF base class.
 
@@ -120,14 +120,13 @@ Now that the derived plugin class has been created we need to do something with 
 So for our example plugin design we will need to do the following:
   # Add the following lines of code to the plugin file.
 
- {{{
- if( !$myTestPlugin  )
- {
-   // Instantiate the plugin.
-   $myTestPlugin = new MyTestPlugin();
- }
- }}}
-
+{{{
+if( !$myTestPlugin  )
+{
+  // Instantiate the plugin.
+  $myTestPlugin = new MyTestPlugin();
+}
+}}}
 
 = Adding Options & Initializing =
 
