@@ -15,6 +15,14 @@ NOTE: Throughout this document I will reference the design and development of a 
 
 The first step to developing any Wordpress plugin is to create a plugin package. This package consists of a specially named folder to contain your plugin files and a specially named file that is your main plugin file.
 
-So for our example plugin design we will need to create:
-  * "my-test-plugin" folder.
-  * "my-test-plugin.php" file within the "my-test-plugin" folder.
+So for our example plugin design we will need to do the following:
+  # Create a "my-test-plugin" folder.
+  # Create a "my-test-plugin.php" file within the "my-test-plugin" folder.
+
+Don't worry about writing any code at this point. You will need to download and integrate the WPF before you can begin your true plugin development. Don't worry though... integrating the WPF into your plugin package will only take a few minutes.
+
+== Obtaining the Wordpress Plugin Package ==
+
+Now that you have created your basic plugin package you can begin the integration of the WPF into your plugin package. But first, you will need to download the latest release of the WPF from the Wordpress subversion repository.
+
+ [http://wordpress.org/extend/plugins/wordpress-plugin-framework/ Click Here To Download The Latest Release of the Wordpress Plugin Framework]
