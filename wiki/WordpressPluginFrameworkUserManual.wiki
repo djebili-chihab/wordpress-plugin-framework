@@ -130,11 +130,61 @@ if( !$myTestPlugin  )
 
 = Adding Options & Initializing =
 
- MORE INFO COMING SOON...
+The following sections discuss the methods used to add persitent data to and properly initialize the plugin utilizing the WPF.
 
 == Adding Plugin Options ==
 
- MORE INFO COMING SOON...
+Plugin options provide are simply persistent pieces of data that are stored within the Wordpress database. The option values are updates via HTML <input> objects such as textboxes, checkboxes, etc... The WPF currently only supports adding options to the main Wordpress Options database table so discussion of creating and managing database tables is beyond the scope of this document.
+
+To add an option to the plugin you simply need to call the `AddOption()` function and provide it with the appropriate set of parameters for the specific option that is being added to the plugin.
+
+So for this example a single HTML textbox option named `"myTextboxOption"` will be added to the `$myTestPlugin` class. This textbox will default to the text string `"Hello!"` and will be modifiable by the user. A description of the textbox option that displays `"'Simple textbox option for your plugin."` will also be provided to the user. The code to implement this option is described below.
+
+{{{
+$myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_TEXTBOX, 'myTextboxOption', 'Hello!', 'Simple textbox option for your plugin.' );
+}}}
+
+Don't worry if the syntax for the `AddOption()` function looks confusing at this point. The following documentation for this function should help answer any questions that may be present at this time.
+
+{{{
+/**
+ * AddOption() - Adds an option to the plugin's options array.
+ *
+ * This function adds the specified option to the plugin's options array. This array can then be used to
+ * manage the interface between the plugin options and the Wordpress options database.
+ *
+ * @param string    $optionType          Type of the option to add to the array.
+ * @param string    $optionName          Name of the option to add to the array.
+ * @param mixed     $optionValue         Value of the option to add to the array.
+ * @param string    $optionDescription   Description of the option to add to the array.
+ * 
+ * @return void     None.  	 
+ * 
+ * @access public
+ * @since {WP 2.3}
+ * @author Keith Huster
+ */
+function AddOption( $optionType, $optionName, $optionValue, $optionDescription )
+{
+  // Code used to add the option...
+}
+}}}
+
+The valid option types that are currently supported by the WPF are listed below.
+
+  * *OPTION_TYPE_TEXTBOX* - Single line textbox that can contain any text string.
+  * *OPTION_TYPE_TEXTAREA* - Multi-line textbox that can contain any text string.
+  * *OPTION_TYPE_CHECKBOX* - Checkbox containing the value *CHECKBOX_UNCHECKED* or *CHECKBOX_CHECKED* based on the state of the checkbox.
+  * *OPTION_TYPE_RADIOBUTTONS* - A group of radiobutton options (see usage note below).
+  * *OPTION_TYPE_PASSWORDBOX* - Single line password box that can contain any text string.
+  * *OPTION_TYPE_COMBOBOX* - A drop-down style box containing a set of options to select from (see usage note below).
+
+USAGE NOTE: The *OPTION_TYPE_RADIOBUTTONS* and *OPTION_TYPE_COMBOBOX* option types require a set of selectable values to be defined for the option. These options are specified as a comma delimited string of text after within the option's description field. The radiobuttons and combobox options will be displayed in the order that they are added to the description field. The default value for these options types is specified in the standard '$optionValue' parameter of the option. An example radiobutton group containing three radiobuttons named "Radio1", "Radio2", and "Radio3" is shown below.
+
+{{{
+// Add a radiobuttons group containing three radiobuttons (default to "Radio2" being selected).
+$myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_RADIOBUTTONS, 'myRadiobuttonsOption', 'Radio2', 'Simple textbox option for your plugin.,Radio1,Radio2,Radio3' );
+}}}
 
 == Plugin Initialization ==
 
