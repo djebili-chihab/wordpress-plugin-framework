@@ -21,7 +21,7 @@ So for our example plugin design we will need to do the following:
 
 Don't worry about writing any code at this point. You will need to download and integrate the WPF before you can begin your true plugin development. Don't worry though... integrating the WPF into your plugin package will only take a few minutes.
 
-NOTE: You may want to integrate your plugin package with the Wordpress subversion repository in order to maintain proper revision control and allow for other Wordpress users to gain access to your plugin. Information on utilizing the Wordpress subversion repository is out of the scope of this document. However, more information on this topic can be found at the [http://wordpress.org/extend/plugins/add/ Add Your Plugin] Wordpress Extend webpage.
+NOTE: You may want to integrate your plugin package with the Wordpress subversion repository in order to maintain proper revision control and allow for other Wordpress users to gain access to your plugin. Information on utilizing the Wordpress subversion repository is out of the scope of this document. However, more information on this topic can be found at the Wordpress Extend [http://wordpress.org/extend/plugins/add/ Add Your Plugin] webpage.
 
 == Obtaining the Wordpress Plugin Framework ==
 
@@ -64,18 +64,48 @@ You have now successfully customized the *wordpress-plugin-framework.php* file f
   * _Release a new version of your plugin_ - You will need to modify the *$PLUGIN_VERSION* to reflect the new appropriate plugin version number.
   * _Upgrade your plugin to a new release of the WPF_ - You will need to follow the guidelines specified for the new release of the WPF.
 
-= Implementing the Plugin =
+= Plugin Implementation =
 
-*MORE INFO COMING SOON...*
+You are now ready to get the ball rolling on your plugin development. However, before we can deep dive the usage of the WPF you will need to perform a few standard Wordpress plugin development steps first.
 
-== Customizing the README File ==
+== Standard Wordpress Plugin Requirements ==
 
-*MORE INFO COMING SOON...*
+Every Wordpress plugin is required to contain a valid Wordpress plugin header section and a valid *README.txt* file. Specifics about these two items are beyond the scope of this document. However, you may find more information about these two topics by clicking on the link below.
 
-== Creating the Plugin Header ==
-
-*MORE INFO COMING SOON...*
+ [http://codex.wordpress.org/Writing_a_Plugin Click Here To Read About Wordpress Plugin Development]
 
 == Creating the Plugin Class ==
 
-*MORE INFO COMING SOON...*
+ MORE INFO COMING SOON...
+
+== Instantiating the Plugin ==
+
+ MORE INFO COMING SOON...
+
+
+
+= Adding Options & Initializing =
+
+ MORE INFO COMING SOON...
+
+== Adding Plugin Options ==
+
+ MORE INFO COMING SOON...
+
+== Plugin Initialization ==
+
+ MORE INFO COMING SOON...
+
+
+
+= Creating the Plugin Administration Interface =
+
+ MORE INFO COMING SOON...
+
+== Adding Plugin Administration Blocks ==
+
+ MORE INFO COMING SOON...
+
+== Registering the Plugin Administration Page ==
+
+ MORE INFO COMING SOON...
