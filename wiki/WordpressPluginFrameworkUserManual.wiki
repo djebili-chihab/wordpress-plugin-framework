@@ -54,21 +54,21 @@ This step is extremely important so to make sure that you get it right I will wa
 So for our example plugin design we will need to do the following:
   # Modify the name of the WPF base class to be specific to this plugin.
 
- {{{
- class MyTestPlugin_WordpressPluginFramework
- }}}
+{{{
+class MyTestPlugin_WordpressPluginFramework
+}}}
 
   # Modify the plugin specific parameters of the WPF base class.
 
- {{{
- var $PLUGIN_TITLE = "My Test Plugin";
- var $PLUGIN_VERSION = "1.00";
- var $PLUGIN_SUBFOLDER_NAME = "my-test-plugin";
- var $PLUGIN_FILE_NAME = "my-test-plugin";
- var $PLUGIN_ADMIN_MENU_TITLE = "My Test Plugin";
- var $PLUGIN_ADMIN_MENU_PAGE_TITLE = "My Test Plugin Options Page";
- var $PLUGIN_ADMIN_MENU_PAGE_SLUG = "my-test-plugin-options";
- }}}
+{{{
+var $PLUGIN_TITLE = "My Test Plugin";
+var $PLUGIN_VERSION = "1.00";
+var $PLUGIN_SUBFOLDER_NAME = "my-test-plugin";
+var $PLUGIN_FILE_NAME = "my-test-plugin";
+var $PLUGIN_ADMIN_MENU_TITLE = "My Test Plugin";
+var $PLUGIN_ADMIN_MENU_PAGE_TITLE = "My Test Plugin Options Page";
+var $PLUGIN_ADMIN_MENU_PAGE_SLUG = "my-test-plugin-options";
+}}}
 
 You have now successfully customized the *wordpress-plugin-framework.php* file for your plugin. From this point forward, you will not need to modify this file unless you perform one of the following tasks.
 
