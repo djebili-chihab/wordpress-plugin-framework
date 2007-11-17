@@ -172,14 +172,14 @@ function AddOption( $optionType, $optionName, $optionValue, $optionDescription )
 
 The valid option types that are currently supported by the WPF are listed below.
 
-  * *OPTION_TYPE_TEXTBOX* - Single line textbox that can contain any text string.
-  * *OPTION_TYPE_TEXTAREA* - Multi-line textbox that can contain any text string.
-  * *OPTION_TYPE_CHECKBOX* - Checkbox containing the value *CHECKBOX_UNCHECKED* or *CHECKBOX_CHECKED* based on the state of the checkbox.
-  * *OPTION_TYPE_RADIOBUTTONS* - A group of radiobutton options (see usage note below).
-  * *OPTION_TYPE_PASSWORDBOX* - Single line password box that can contain any text string.
-  * *OPTION_TYPE_COMBOBOX* - A drop-down style box containing a set of options to select from (see usage note below).
+  * `OPTION_TYPE_TEXTBOX` - Single line textbox that can contain any text string.
+  * `OPTION_TYPE_TEXTAREA` - Multi-line textbox that can contain any text string.
+  * `OPTION_TYPE_CHECKBOX` - Checkbox containing the value `CHECKBOX_UNCHECKED` or `CHECKBOX_CHECKED` based on the state of the checkbox.
+  * `OPTION_TYPE_RADIOBUTTONS` - A group of radiobutton options (see usage note below).
+  * `OPTION_TYPE_PASSWORDBOX` - Single line password box that can contain any text string.
+  * `OPTION_TYPE_COMBOBOX` - A drop-down style box containing a set of options to select from (see usage note below).
 
-USAGE NOTE: The *OPTION_TYPE_RADIOBUTTONS* and *OPTION_TYPE_COMBOBOX* option types require a set of selectable values to be defined for the option. These options are specified as a comma delimited string of text after within the option's description field. The radiobuttons and combobox options will be displayed in the order that they are added to the description field. The default value for these options types is specified in the standard '$optionValue' parameter of the option. An example radiobutton group containing three radiobuttons named "Radio1", "Radio2", and "Radio3" is shown below.
+USAGE NOTE: The `OPTION_TYPE_RADIOBUTTONS` and `OPTION_TYPE_COMBOBOX` option types require a set of selectable values to be defined for the option. These options are specified as a comma delimited string of text within the option's description field. The radiobuttons and combobox options will be displayed in the order that they are added to the description field. The default value for these options types is specified in the standard '$optionValue' parameter of the option. An example radiobutton group containing three radiobuttons named "Radio1", "Radio2", and "Radio3" is shown below.
 
 {{{
 // Add a radiobuttons group containing three radiobuttons (default to "Radio2" being selected).
