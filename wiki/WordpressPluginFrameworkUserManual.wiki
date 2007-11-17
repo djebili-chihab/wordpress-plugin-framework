@@ -82,7 +82,11 @@ Every Wordpress plugin is required to contain a valid Wordpress plugin header se
 
 == Creating the Plugin Class ==
 
- MORE INFO COMING SOON...
+Before you can begin developing your plugin's class you will need to include the WPF in your plugin's file. This is easily accomplished by using the require_once() function.
+
+So for our example plugin design we will need to do the following:
+  # Open the *my-test-plugin.php* file.
+  # Add 'require_once( "wordpress-plugin-framework.php" );' just below the plugin header.
 
 == Instantiating the Plugin ==
 
