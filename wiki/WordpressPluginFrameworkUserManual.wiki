@@ -179,7 +179,7 @@ The valid option types that are currently supported by the WPF are listed below.
   * `OPTION_TYPE_PASSWORDBOX` - Single line password box that can contain any text string.
   * `OPTION_TYPE_COMBOBOX` - A drop-down style box containing a set of options to select from (see usage note below).
 
- USAGE NOTE: The `OPTION_TYPE_RADIOBUTTONS` and `OPTION_TYPE_COMBOBOX` option types require a set of selectable values to be defined for the option. These options are specified as a comma delimited string of text within the option's description field. The radiobuttons and combobox options will be displayed in the order that they are added to the description field. The default value for these options types is specified in the standard '$optionValue' parameter of the option. An example radiobutton group containing three radiobuttons named "Radio1", "Radio2", and "Radio3" is shown below.
+ *USAGE NOTE:* The `OPTION_TYPE_RADIOBUTTONS` and `OPTION_TYPE_COMBOBOX` option types require a set of selectable values to be defined for the option. These options are specified as a comma delimited string of text within the option's description field. The radiobuttons and combobox options will be displayed in the order that they are added to the description field. The default value for these options types is specified in the standard '$optionValue' parameter of the option. An example radiobutton group containing three radiobuttons named "Radio1", "Radio2", and "Radio3" is shown below.
 
 {{{
 // Add a radiobuttons group containing three radiobuttons (default to "Radio2" being selected).
@@ -188,9 +188,19 @@ $myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_RADIOBUTTONS, 'myRadiobutto
 
 == Plugin Initialization ==
 
- MORE INFO COMING SOON...
+*NOTE:* The WPF requires that all of the plugin optios must be added prior to initializing the plugin.
 
+Once all of the plugin options have been added to the plugin it is safe to call the `Initialize()` function to properly initialize the plugin.
 
+So for our example plugin design we will need to do the following:
+  # Add the following lines of code to the plugin file.
+
+{{{
+// Initialize the plugin and inform the WPF of the plugin's file location.
+$myTestPlugin->Initialize( __FILE__ );
+}}}
+
+Once the plugin has been successfully initialized an administration interface can be added to allow the user to interact with the plugin.
 
 = Creating the Plugin Administration Interface =
 
