@@ -52,13 +52,13 @@ First you will need to customize the name of the WPF class for your plugin packa
 This step is extremely important so to make sure that you get it right I will walk you through a demonstration of customizing for the *My Test Plugin* package.
 
 So for our example plugin design we will need to do the following:
-  # Modify the name of the WPF base class to be specific to this plugin.
+  * Modify the name of the WPF base class to be specific to this plugin.
 
 {{{
 class MyTestPlugin_WordpressPluginFramework
 }}}
 
-  # Modify the plugin specific parameters of the WPF base class.
+  * Modify the plugin specific parameters of the WPF base class.
 
 {{{
 var $PLUGIN_TITLE = "My Test Plugin";
@@ -93,7 +93,7 @@ Every Wordpress plugin is required to contain a valid Wordpress plugin header se
 Before you can begin developing your plugin's class you will need to include the WPF in your plugin's file. This is easily accomplished by using the require_once() function.
 
 So for our example plugin design we will need to do the following:
-  # Open the *my-test-plugin.php* file and add the following code just below the plugin header.
+  * Open the *my-test-plugin.php* file and add the following code just below the plugin header.
   
 {{{
 require_once( "wordpress-plugin-framework.php" );` just below the plugin header.
@@ -102,7 +102,7 @@ require_once( "wordpress-plugin-framework.php" );` just below the plugin header.
 Now that the WPF is included in the project you can safely begin development of the plugin class. The first step in the class development is to derive your plugin class from the WPF base class (i.e. the class that was previously customized for this plugin).
 
 So for our example plugin design we will need to do the following:
-  # Add the following lines of code to the plugin file.
+  * Add the following lines of code to the plugin file.
 
 {{{
 class MyTestPlugin extends MyTestPlugin_WordpressPluginFramework
@@ -118,7 +118,7 @@ This step completes the creation of a plugin derived from the WPF base class.
 Now that the derived plugin class has been created we need to do something with it. First the plugin class will need to be instantiated before it can be utilized.
 
 So for our example plugin design we will need to do the following:
-  # Add the following lines of code to the plugin file.
+  * Add the following lines of code to the plugin file.
 
 {{{
 if( !$myTestPlugin  )
@@ -193,7 +193,7 @@ $myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_RADIOBUTTONS, 'myRadiobutto
 Once all of the plugin options have been added to the plugin it is safe to call the `Initialize()` function to properly initialize the plugin.
 
 So for our example plugin design we will need to do the following:
-  # Add the following lines of code to the plugin file.
+  * Add the following lines of code to the plugin file.
 
 {{{
 // Initialize the plugin and inform the WPF of the plugin's file location.
