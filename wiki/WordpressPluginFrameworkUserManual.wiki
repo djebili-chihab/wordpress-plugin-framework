@@ -52,15 +52,23 @@ First you will need to customize the name of the WPF class for your plugin packa
 This step is extremely important so to make sure that you get it right I will walk you through a demonstration of customizing for the *My Test Plugin* package.
 
 So for our example plugin design we will need to do the following:
-  # Modify the *class DemoPlugin_WordpressPluginFramework* line to be *class MyTestPlugin_WordpressPluginFramework*.
-  # Set *$PLUGIN_TITLE* to be *"My Test Plugin"*.
-  # Set *$PLUGIN_VERSION* to be *"1.00"* (the appropriate version number).
-  # Set *$PLUGIN_SUBFOLDER_NAME* to be *"my-test-plugin"*.
-  # Set *$PLUGIN_FILE_NAME* to be *"my-test-plugin"*.
-  # Set *$PLUGIN_ADMIN_MENU_TITLE* to be *"My Test Plugin"*.
-  # Set *$PLUGIN_ADMIN_MENU_PAGE_TITLE* to be *"My Test Plugin Options Page"*.
-  # Set *$PLUGIN_TITLE* to be *"My Test Plugin"*.
-  # Set *$PLUGIN_ADMIN_MENU_PAGE_SLUG* to be *"my-test-plugin-options"*.
+  # Modify the name of the WPF base class to be specific to this plugin.
+
+ {{{
+ class MyTestPlugin_WordpressPluginFramework
+ }}}
+
+  # Modify the plugin specific parameters of the WPF base class.
+
+ {{{
+ var $PLUGIN_TITLE = "My Test Plugin";
+ var $PLUGIN_VERSION = "1.00";
+ var $PLUGIN_SUBFOLDER_NAME = "my-test-plugin";
+ var $PLUGIN_FILE_NAME = "my-test-plugin";
+ var $PLUGIN_ADMIN_MENU_TITLE = "My Test Plugin";
+ var $PLUGIN_ADMIN_MENU_PAGE_TITLE = "My Test Plugin Options Page";
+ var $PLUGIN_ADMIN_MENU_PAGE_SLUG = "my-test-plugin-options";
+ }}}
 
 You have now successfully customized the *wordpress-plugin-framework.php* file for your plugin. From this point forward, you will not need to modify this file unless you perform one of the following tasks.
 
@@ -110,6 +118,15 @@ This step completes the creation of a plugin derived from the WPF base class.
 Now that the derived plugin class has been created we need to do something with it. First the plugin class will need to be instantiated before it can be utilized.
 
 So for our example plugin design we will need to do the following:
+  # Add the following lines of code to the plugin file.
+
+ {{{
+ if( !$myTestPlugin  )
+ {
+   // Instantiate the plugin.
+   $myTestPlugin = new MyTestPlugin();
+ }
+ }}}
 
 
 = Adding Options & Initializing =
