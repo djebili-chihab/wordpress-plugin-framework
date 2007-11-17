@@ -38,7 +38,13 @@ So for our example plugin design we will need to do the following:
 
 See... I told you it would be painless... well, you aren't quite done yet. You will still need to customize a small section of the *wordpress-plugin-framework.php* file for your specific plugin.
 
-The customizations required for your specific plugin provide the WPF with some specific knowledge about your plugin package and naming structures. Knowledge of these structures is required in order for the WPF to operate properly. This step is extremely important so to make sure that you get it right I will walk you through a demonstration of customizing for the *My Test Plugin" package.
+The customizations required for your specific plugin provide the WPF with some specific knowledge about your plugin package and naming structures. Knowledge of these structures is required in order for the WPF to operate properly. 
+
+First you will need to customize the name of the WPF class for your plugin package. This is required due to the lack of namespace support in PHP 4/5. Then you will need to customize the section of plugin-specific class variables so that the WPF will be able to find and work with your plugin package.
+
+This step is extremely important so to make sure that you get it right I will walk you through a demonstration of customizing for the *My Test Plugin* package.
 
 So for our example plugin design we will need to do the following:
-  #
+  # Modify the *class DemoPlugin_WordpressPluginFramework* line to be *class MyTestPlugin_WordpressPluginFramework*.
+  # Set *$PLUGIN_TITLE* to be *"My Test Plugin"*.
+  # 
