@@ -9,20 +9,36 @@ The Wordpress Plugin Framework (WPF) is a PHP class that is used to provide a fr
 
 This section will provide a strategy for the creation of a plugin based from the WPF.
 
-NOTE: Throughout this document I will reference the design and development of a fictional "My Test Plugin" that resides in the "my-test-plugin" folder and is implemented as the "my-test-plugin.php" file. 
+NOTE: Throughout this document I will reference the design and development of a fictional *My Test Plugin* that resides in the *my-test-plugin* folder and is implemented as the *my-test-plugin.php* file. 
 
 == Creating a Plugin Package ==
 
 The first step to developing any Wordpress plugin is to create a plugin package. This package consists of a specially named folder to contain your plugin files and a specially named file that is your main plugin file.
 
 So for our example plugin design we will need to do the following:
-  # Create a "my-test-plugin" folder.
-  # Create a "my-test-plugin.php" file within the "my-test-plugin" folder.
+  # Create a *my-test-plugin* folder.
+  # Create a *my-test-plugin.php* file within the *my-test-plugin* folder.
 
 Don't worry about writing any code at this point. You will need to download and integrate the WPF before you can begin your true plugin development. Don't worry though... integrating the WPF into your plugin package will only take a few minutes.
 
-== Obtaining the Wordpress Plugin Package ==
+== Obtaining the Wordpress Plugin Framework ==
 
-Now that you have created your basic plugin package you can begin the integration of the WPF into your plugin package. But first, you will need to download the latest release of the WPF from the Wordpress subversion repository.
+Now that you have created your basic plugin package you can begin integration of the WPF into your plugin package. But first, you will need to download the latest release of the WPF from the Wordpress subversion repository.
 
  [http://wordpress.org/extend/plugins/wordpress-plugin-framework/ Click Here To Download The Latest Release of the Wordpress Plugin Framework]
+
+== Integrating the Wordpress Plugin Framework ==
+
+Integration of the WPF into your plugin package is a fairly simple and painless process. First you will need to unzip the archive file that you retrieved from the Wordpress subversion repository. Next you will need to copy the *wordpress-plugin-framework.php* and *README.txt* files into your plugin package folder.
+
+So for our example plugin design we will need to do the following:
+  # Unzip the archive file to the *wordpress-plugin-framework* folder.
+  # Copy the *wordpress-plugin-framework.php* file into the *my-test-plugin* folder.
+  # Copy the *README.txt* file into the *my-test-plugin* folder.
+
+See... I told you it would be painless... well, you aren't quite done yet. You will still need to customize a small section of the *wordpress-plugin-framework.php* file for your specific plugin.
+
+The customizations required for your specific plugin provide the WPF with some specific knowledge about your plugin package and naming structures. Knowledge of these structures is required in order for the WPF to operate properly. This step is extremely important so to make sure that you get it right I will walk you through a demonstration of customizing for the *My Test Plugin" package.
+
+So for our example plugin design we will need to do the following:
+  #
