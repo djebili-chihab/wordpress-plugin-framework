@@ -64,4 +64,18 @@ You have now successfully customized the *wordpress-plugin-framework.php* file f
   * _Release a new version of your plugin_ - You will need to modify the *$PLUGIN_VERSION* to reflect the new appropriate plugin version number.
   * _Upgrade your plugin to a new release of the WPF_ - You will need to follow the guidelines specified for the new release of the WPF.
 
+= Implementing the Plugin =
+
+*MORE INFO COMING SOON...*
+
+== Customizing the README File ==
+
+*MORE INFO COMING SOON...*
+
+== Creating the Plugin Header ==
+
+*MORE INFO COMING SOON...*
+
+== Creating the Plugin Class ==
+
 *MORE INFO COMING SOON...*
