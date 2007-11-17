@@ -86,7 +86,7 @@ Before you can begin developing your plugin's class you will need to include the
 
 So for our example plugin design we will need to do the following:
   # Open the *my-test-plugin.php* file.
-  # Add 'require_once( "wordpress-plugin-framework.php" );' just below the plugin header.
+  # Add `require_once( "wordpress-plugin-framework.php" );` just below the plugin header.
 
 == Instantiating the Plugin ==
 
