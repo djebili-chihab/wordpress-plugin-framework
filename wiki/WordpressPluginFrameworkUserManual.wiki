@@ -38,6 +38,8 @@ So for our example plugin design we will need to do the following:
 
 See... I told you it would be painless... well, you aren't quite done yet. You will still need to customize a small section of the *wordpress-plugin-framework.php* file for your specific plugin.
 
+== Customizing the Wordpress Plugin Framework ==
+
 The customizations required for your specific plugin provide the WPF with some specific knowledge about your plugin package and naming structures. Knowledge of these structures is required in order for the WPF to operate properly. 
 
 First you will need to customize the name of the WPF class for your plugin package. This is required due to the lack of namespace support in PHP 4/5. Then you will need to customize the section of plugin-specific class variables so that the WPF will be able to find and work with your plugin package.
@@ -54,3 +56,8 @@ So for our example plugin design we will need to do the following:
   # Set *$PLUGIN_ADMIN_MENU_PAGE_TITLE* to be *"My Test Plugin Options Page"*.
   # Set *$PLUGIN_TITLE* to be *"My Test Plugin"*.
   # Set *$PLUGIN_ADMIN_MENU_PAGE_SLUG* to be *"my-test-plugin-options"*.
+
+You have now successfully customized the *wordpress-plugin-framework.php* file for your plugin. From this point forward, you will not need to modify this file unless you perform one of the following tasks.
+
+  * *Release a new version of your plugin* - You will need to modify the *$PLUGIN_VERSION* to reflect the new appropriate plugin version number.
+  * *Upgrade your plugin to a new release of the WPF* - You will need to follow the guidelines specified for the new release of the WPF.
