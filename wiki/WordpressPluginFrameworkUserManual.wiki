@@ -118,6 +118,18 @@ Every Wordpress plugin is required to contain a valid Wordpress plugin header se
 
 
 
-= Testing Your Plugin =
+= Testing the Plugin =
+
+ MORE INFO COMING SOON...
+
+== Installing and Activating the Plugin ==
+
+ MORE INFO COMING SOON...
+
+== Updating Plugin Options ==
+
+ MORE INFO COMING SOON...
+
+== Uninstalling and Deactivating the Plugin ==
 
  MORE INFO COMING SOON...
