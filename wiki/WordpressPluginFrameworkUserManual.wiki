@@ -190,7 +190,7 @@ $myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_RADIOBUTTONS, 'myRadiobutto
 
 Once all of the plugin options have been added to the plugin it is safe to call the `Initialize()` function to properly initialize the plugin.
 
- _NOTE:_ The WPF requires that all of the plugin optios must be added prior to initializing the plugin.
+ _NOTE:_ The WPF requires that all of the plugin options must be added prior to initializing the plugin.
 
 So for our example plugin design we will need to do the following:
   * Add the following lines of code to the plugin file.
@@ -252,14 +252,18 @@ So for this example a single page block that displays "Hello World!" will be add
 // Plugin class function containing the raw HTML content code.
 function HTML_DisplayPluginHelloWorldBlock()
 {
-  // End PHP
+  ?>
   <p>Hello World!</p>
-  // Start PHP
+  <?php
 }
-
-// Function used to add the content block to the plugin administration page.
-$myDemoPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myDemoPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myDemoPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
 }}}
+
+{{{
+// Function used to add the content block to the plugin administration page.
+$myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myTestPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
+}}}
+
+ _NOTE:_ The WPF requires that all of the plugin page blocks must be added prior to registering the plugin administration page. Also, the blocks will be displayed in the order that they are added to the page. For proper block positioning, all "Main" blocks must be added prior to adding the "Sidebar" blocks (allows the CSS "float" property to work correctly).
 
 == Registering the Plugin Administration Page ==
 
