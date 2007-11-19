@@ -320,3 +320,98 @@ $myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $
 = Testing the Plugin =
 
 Once the plugin has been successfully initialized an administration interface has been added and registered the plugin can be safely integrated into a Wordpress installation.
+
+= Appendix A: Example "my-test-plugin.php" File =
+
+The following code fully implements the *My Test Plugin* plugin described throughout this document.
+
+{{{
+<?php
+/**
+ *     ---------------       DO NOT DELETE!!!     ---------------
+ * 
+ *     Plugin Name:  My Test Plugin
+ *     Plugin URI:   http://code.google.com/p/wordpress-plugin-framework/w/edit/WordpressPluginFrameworkUserManual
+ *     Description:  A simple test plugin used to demonstrate the Wordpress Plugin Framework.
+ *     Version:      0.01
+ *     Author:       Double Black Design
+ *     Author URI:   http://www.doubleblackdesign.com
+ *
+ *     ---------------       DO NOT DELETE!!!     ---------------
+ *
+ *    This is the required license information for a Wordpress plugin.
+ *
+ *    Copyright 2007  Keith Huster  (email : husterk@doubleblackdesign.com)
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ *
+ *     ---------------       DO NOT DELETE!!!     ---------------
+ */
+
+
+/**
+ * Include the WordpressPluginFramework.
+ */
+require_once( "wordpress-plugin-framework.php" ); 
+
+
+
+/**
+ * MyTestPlugin - Simple plugin class used to demonstrate the WordpressPluginFramework.
+ *
+ * @package my-test-plugin
+ * @since {WP 2.3} 
+ * @author Keith Huster
+ */
+class MyTestPlugin extends MyTestPlugin_WordpressPluginFramework
+{
+  /**
+   * HTML_DisplayPluginHelloWorldBlock() - Displays the "Hello World!" content block.
+   *
+   * This function generates the markup required to display the specified content block.
+   *
+   * @param void      None.
+   * 
+   * @return void     None.  	 
+   * 
+   * @access private  Access via internal callback only.
+   * @since {WP 2.3}
+   * @author Keith Huster
+   */
+   function HTML_DisplayPluginHelloWorldBlock()
+   {
+      ?>
+      <p>Hello World!</p>
+      <?php
+   }
+}
+
+/**
+ * Demonstration of creating a plugin utilizing the WordpressPlugin Framework.
+ */
+if( !$myTestPlugin )
+{
+  // Create a new instance of My Test Plugin.
+  $myTestPlugin = new MyTestPlugin();
+
+  // Add the plugin options and initialize the plugin.
+  $myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_TEXTBOX, 'myTextboxOption', 'Hello!', 'Simple textbox option for your plugin.' );
+  $myTestPlugin->Initialize( __FILE__ );
+
+  // Add the administration page content blocks and register the page.
+  $myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myTestPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
+  $myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $myTestPlugin->RIGHTS_REQUIRED_ADMIN );
+}
+}}}
