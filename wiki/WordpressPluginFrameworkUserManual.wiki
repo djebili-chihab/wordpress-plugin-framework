@@ -317,8 +317,6 @@ So for our example plugin design we will need to add the plugin administration p
 $myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $myTestPlugin->RIGHTS_REQUIRED_ADMIN );
 }}}
 
-= Testing the Plugin =
-
 Once the plugin has been successfully initialized an administration interface has been added and registered the plugin can be safely integrated into a Wordpress installation.
 
 = Appendix A: Example "my-test-plugin.php" File =
