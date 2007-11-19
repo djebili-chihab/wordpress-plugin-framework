@@ -252,9 +252,9 @@ So for this example a single page block that displays "Hello World!" will be add
 // Plugin class function containing the raw HTML content code.
 function HTML_DisplayPluginHelloWorldBlock()
 {
-  ?>
+  // End PHP
   <p>Hello World!</p>
-  <?php
+  // Start PHP
 }
 
 // Function used to add the content block to the plugin administration page.
