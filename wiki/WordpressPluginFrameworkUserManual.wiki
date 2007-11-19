@@ -212,7 +212,7 @@ The WPF provides a standardized method of adding content to the plugin administr
 
 To add a block to the plugin's administration page the `AddAdministrationPageBlock()` function must be called. This function utilizes a defined set of parameters to determine the name, content, and location of the specified page block within the plugin administration page. 
 
-The following documentation is provided for the `AddAdministrationPageBlock()` function should to help answer any questions that may be present at this time.
+The following documentation is provided for the `AddAdministrationPageBlock()` function to help answer any questions that may be present at this time.
 
 {{{
 /**
@@ -263,26 +263,60 @@ function HTML_DisplayPluginHelloWorldBlock()
 $myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myTestPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
 }}}
 
- _NOTE:_ The WPF requires that all of the plugin page blocks must be added prior to registering the plugin administration page. Also, the blocks will be displayed in the order that they are added to the page. For proper block positioning, all "Main" blocks must be added prior to adding the "Sidebar" blocks (allows the CSS "float" property to work correctly).
-
 == Registering the Plugin Administration Page ==
 
- MORE INFO COMING SOON...
+Once all of the content blocks have been added to the plugin administration page it is safe to call the `RegisterAdministrationPage()` function to properly register and display the plugin administration page within the Wordpress dashboard.
 
+ _NOTE:_ The WPF requires that all of the plugin page blocks must be added prior to registering the plugin administration page. Also, the blocks will be displayed in the order that they are added to the page. For proper block positioning, all "Main" blocks must be added prior to adding the "Sidebar" blocks (allows the CSS "float" property to work correctly).
 
+The following documentation is provided for the `RegisterAdministrationPage()` function to help answer any questions that may be present at this time.
+
+{{{
+/**
+ * RegisterAdministrationPage() - Registers the plugin's administration page.
+ *
+ * This function registers the plugin's administration page with the Wordpress core via the add_action()
+ * hook. This hook allows the plugin's administration paege to be processed as any standard Wordpress
+ * administration page (such as the dashboard).
+ *
+ * @param string    $parentMenu          Parent menu of the plugin's administration menu.
+ * @param string    $minimumAccessLevel  Minimum user access rights required to access the plugin's administration page.
+ * 
+ * @return void     None.  	 
+ * 
+ * @access public
+ * @since {WP 2.3}
+ * @author Keith Huster
+ */
+function RegisterAdministrationPage( $parentMenu, $minimumAccessLevel )
+{
+  // Code used to register the plugin administration page...
+}
+}}}
+
+The `$parentMenu` parameter is specifed to be one of the pre-defined menu items listed below.
+
+  * `PARENT_MENU_DASHBOARD` - The "Dashboard" parent menu item.
+  * `PARENT_MENU_WRITE` - The "Write" parent menu item.
+  * `PARENT_MENU_MANAGE` - The "Manage" parent menu item.
+  * `PARENT_MENU_COMMENTS` - The "Comments" parent menu item.
+  * `PARENT_MENU_BLOGROLL` - The "Blogroll" parent menu item.
+  * `PARENT_MENU_PRESENTATION` - The "Presentation" parent menu item.
+  * `PARENT_MENU_PLUGINS` - The "Plugins" parent menu item.
+  * `PARENT_MENU_USERS` - The "Users" parent menu item.
+  * `PARENT_MENU_OPTIONS` - The "Options" parent menu item.
+
+The `$minimumAccessLevel` parameter is specifed to be one of the pre-defined access level items listed below.
+
+  * `RIGHTS_REQUIRED_ADMIN` - The "Administrator" access level.
+
+So for our example plugin design we will need to add the plugin administration page to the "Plugins" parent menu and we will require "Administrator" level access to this page.
+
+{{{
+// Register the plugin administration page with the Wordpress dashboard core.
+$myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $myTestPlugin->RIGHTS_REQUIRED_ADMIN );
+}}}
 
 = Testing the Plugin =
 
- MORE INFO COMING SOON...
-
-== Installing and Activating the Plugin ==
-
- MORE INFO COMING SOON...
-
-== Updating Plugin Options ==
-
- MORE INFO COMING SOON...
-
-== Uninstalling and Deactivating the Plugin ==
-
- MORE INFO COMING SOON...
+Once the plugin has been successfully initialized an administration interface has been added and registered the plugin can be safely integrated into a Wordpress installation.
