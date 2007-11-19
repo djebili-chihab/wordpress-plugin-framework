@@ -204,11 +204,62 @@ Once the plugin has been successfully initialized an administration interface ca
 
 = Creating the Plugin Administration Interface =
 
- MORE INFO COMING SOON...
+The following sections discuss the methods used to add an administration interface to the plugin utilizing the WPF that is accessible via the Wordpress administration dashboard.
 
 == Adding Plugin Administration Blocks ==
 
- MORE INFO COMING SOON...
+The WPF provides a standardized method of adding content to the plugin administration page. This standard method utilizes the concept of "blocks" of content to help define specialized sections of the plugin's administration page. Each of these "blocks" is displayed as a collapsible section within the plugin's administration page.
+
+To add a block to the plugin's administration page the `AddAdministrationPageBlock()` function must be called. This function utilizes a defined set of parameters to determine the name, content, and location of the specified page block within the plugin administration page. 
+
+The following documentation is provided for the `AddAdministrationPageBlock()` function should to help answer any questions that may be present at this time.
+
+{{{
+/**
+ * AddAdministrationPageBlock() - Adds a block of content to be displayed in the plugin's administration page.
+ *
+ * This function adds a block of content (i.e. an instance of a dbx-box class) to the plugin's administration
+ * page. The placement and size of the block is controlled by the $blockType parameter.
+ *
+ * @param string    $blockId             ID of the content block used in HTML formatting (no spaces allowed).
+ * @param string    $blockTitle          Title of the content block.
+ * @param string    $blockType           Type of content block (one of CONTENT_BLOCK_TYPE_xxx).
+ * @param string    $blockFunctionPtr    Function containing the content to be displayed.
+ * 
+ * @return void     None.  	 
+ * 
+ * @access public
+ * @since {WP 2.3}
+ * @author Keith Huster
+ */
+function AddAdministrationPageBlock( $blockId, $blockTitle, $blockType, $blockFunctionPtr )
+{
+  // Code used to add the page block...
+
+}
+}}}
+
+The `$blockType` parameter is specifed to be one of the pre-defined block types listed below.
+
+  * `CONTENT_BLOCK_TYPE_MAIN` - Larger block type that displays main content information.
+  * `CONTENT_BLOCK_TYPE_SIDEBAR` - Sidebar information displayed to the right of the main content blocks.
+
+The final parameter to the `AddAdministrationPageBlock()` function is a pointer to the function containing the content to be displayed within the page block. This implementation method allows the plugin developer to maintain separation between the plugin being developed and the core WPF functionality. Hence all HTML display functions within the plugin class can be isolated from the inner core functionality of the WPF.
+
+So for this example a single page block that displays "Hello World!" will be added to the plugin administration page. The plugin class function used to contain the raw HTML code for displaying the "Hello World!" text string is defined to be `HTML_DisplayPluginHelloWorldBlock()`.
+
+{{{
+// Plugin class function containing the raw HTML content code.
+function HTML_DisplayPluginHelloWorldBlock()
+{
+  ?>
+  <p>Hello World!</p>
+  <?php
+}
+
+// Function used to add the content block to the plugin administration page.
+$myDemoPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myDemoPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myDemoPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
+}}}
 
 == Registering the Plugin Administration Page ==
 
