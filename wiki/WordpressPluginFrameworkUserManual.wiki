@@ -196,6 +196,8 @@ The valid option types that are currently supported by the WPF are listed below.
   * `OPTION_TYPE_RADIOBUTTONS` - A group of radiobutton options (see usage note below).
   * `OPTION_TYPE_PASSWORDBOX` - Single line password box that can contain any text string.
   * `OPTION_TYPE_COMBOBOX` - A drop-down style box containing a set of options to select from (see usage note below).
+  * `OPTION_TYPE_FILEBROWSER` - Single line textbox with a "browse" button.
+  * `OPTION_TYPE_HIDDEN` - Hidden option type that is not displayed.
 
  _USAGE NOTE:_ The `OPTION_TYPE_RADIOBUTTONS` and `OPTION_TYPE_COMBOBOX` option types require a set of selectable values to be defined for the option. These options are specified as the `$optionValuesArray` input parameter. Also, the radiobuttons and combobox options will be displayed in the order that they are added to the `$optionValuesArray` parameter. The default value for these options types is specified in the standard '$optionValue' parameter of the option. An example radiobutton group containing three radiobuttons named "Radio1", "Radio2", and "Radio3" is shown below.
 
