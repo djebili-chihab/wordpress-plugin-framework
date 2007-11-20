@@ -6,7 +6,9 @@
 *Wordpress Plugin Framework - v0.05*
 
 This release improves on v0.04 by adding:
-  * Coming soon...
+  * Developer debug interface (view of current option values).
+  * Support for adding and removing Wordpress `filters` and `actions`.
+  * Enhanced plugin administration.
 
 
 = Latest Release =
