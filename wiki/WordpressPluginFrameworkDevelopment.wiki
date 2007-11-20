@@ -3,18 +3,17 @@
 
 = Current Development =
 
-*Wordpress Plugin Framework - v0.04*
+*Wordpress Plugin Framework - v0.05*
 
-This release improves on v0.03 by adding:
-  * Further enhancements to the plugin's administration page.
-  * Initial release of the WPF plugin documentation standard.
+This release improves on v0.04 by adding:
+  * Coming soon...
 
 
 = Latest Release =
 
-*The Wordpress Plugin Framework v0.03 has been released.*
+*The Wordpress Plugin Framework v0.04 has been released.*
 
-This release improves upon v0.02 by adding several new enhanced administration features. This version is also the first version to support multiple concurrent plugins using the WPF.
+This release improves upon v0.03 by adding several new enhanced administration features, formal documentation, and simplified WPF usage.
 
 == Details ==
 
