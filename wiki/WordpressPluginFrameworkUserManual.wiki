@@ -129,9 +129,9 @@ if( !$myTestPlugin  )
 }
 }}}
 
-= Adding Options & Initializing =
+= Adding & Registering Plugin Options=
 
-The following sections discuss the methods used to add persitent data to and properly initialize the plugin utilizing the WPF.
+The following sections discuss the methods used to add options (persitent data) to the plugin and properly register the plugin options with the Wordpress core.
 
 == Adding Plugin Options ==
 
@@ -189,21 +189,21 @@ $myRadioButtonOptions = array( 'Radio1', 'Radio2', 'Radio3' );
 $myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_RADIOBUTTONS, 'myRadiobuttonsOption', $myRadioButtonOptions[1], 'Simple textbox option for your plugin.', $myRadioButtonOptions );
 }}}
 
-== Plugin Initialization ==
+== Registering Plugin Options ==
 
-Once all of the plugin options have been added to the plugin it is safe to call the `Initialize()` function to properly initialize the plugin.
+Once all of the plugin options have been added to the plugin it is safe to call the `RegisterOptions()` function to properly register the plugin options with the Wordpress core.
 
- _NOTE:_ The WPF requires that all of the plugin options must be added prior to initializing the plugin.
+ _NOTE:_ The WPF requires that all of the plugin options must be added prior to attempting to register the plugin options with the Wordpress core.
 
 So for our example plugin design we will need to do the following:
   * Add the following lines of code to the plugin file.
 
 {{{
-// Initialize the plugin and inform the WPF of the plugin's file location.
-$myTestPlugin->Initialize( __FILE__ );
+// Register the plugin options with the Wordpress core.
+$myTestPlugin->RegisterOptions( __FILE__ );
 }}}
 
-Once the plugin has been successfully initialized an administration interface can be added to allow the user to interact with the plugin.
+Once the plugin options have been successfully registered an administration interface can be added to allow the user to interact with the plugin.
 
 = Creating the Plugin Administration Interface =
 
