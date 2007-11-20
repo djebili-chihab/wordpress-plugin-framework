@@ -46,9 +46,7 @@ See... I told you it would be painless... well, you aren't quite done yet. You w
 
 == Customizing the Wordpress Plugin Framework ==
 
-The customizations required for your specific plugin provide the WPF with some specific knowledge about your plugin package and naming structures. Knowledge of these structures is required in order for the WPF to operate properly. 
-
-First you will need to customize the name of the WPF class for your plugin package. This is required due to the lack of namespace support in PHP 4/5. Then you will need to customize the section of plugin-specific class variables so that the WPF will be able to find and work with your plugin package.
+The only customization required for integration of the WPF with the plugin is to modify the name of the WPF class so that it is specific to the plugin package. This is required due to the lack of namespace support in PHP 4/5.
 
 This step is extremely important so to make sure that you get it right I will walk you through a demonstration of customizing for the *My Test Plugin* package.
 
@@ -59,21 +57,8 @@ So for our example plugin design we will need to do the following:
 class MyTestPlugin_WordpressPluginFramework
 }}}
 
-  * Modify the plugin specific parameters of the WPF base class.
-
-{{{
-var $PLUGIN_TITLE = "My Test Plugin";
-var $PLUGIN_VERSION = "1.00";
-var $PLUGIN_SUBFOLDER_NAME = "my-test-plugin";
-var $PLUGIN_FILE_NAME = "my-test-plugin";
-var $PLUGIN_ADMIN_MENU_TITLE = "My Test Plugin";
-var $PLUGIN_ADMIN_MENU_PAGE_TITLE = "My Test Plugin Options Page";
-var $PLUGIN_ADMIN_MENU_PAGE_SLUG = "my-test-plugin-options";
-}}}
-
 You have now successfully customized the *wordpress-plugin-framework.php* file for your plugin. From this point forward, you will not need to modify this file unless you perform one of the following tasks.
 
-  * _Release a new version of your plugin_ - You will need to modify the `PLUGIN_VERSION` to reflect the new appropriate plugin version number.
   * _Upgrade your plugin to a new release of the WPF_ - You will need to follow the guidelines specified for the new release of the WPF.
 
 
@@ -114,9 +99,9 @@ class MyTestPlugin extends MyTestPlugin_WordpressPluginFramework
 
 This step completes the creation of a plugin derived from the WPF base class.
 
-== Instantiating the Plugin ==
+== Instantiating & Initializing the Plugin ==
 
-Now that the derived plugin class has been created we need to do something with it. First the plugin class will need to be instantiated before it can be utilized.
+Now that the derived plugin class has been created we need to do something with it. First the plugin class will need to be instantiated before it can be initialized. Once it has been instantiated it will need to be properly initialized so that the WPF will understand how to work with this specific plugin. The `Initialize()` function requires that the developer input the plugin's `$title`, `$version`, `$subfolderName`, and `$fileName` parameters.
 
 So for our example plugin design we will need to do the following:
   * Add the following lines of code to the plugin file.
@@ -126,10 +111,41 @@ if( !$myTestPlugin  )
 {
   // Instantiate the plugin.
   $myTestPlugin = new MyTestPlugin();
+
+  // Initialize the plugin.
+  $myTestPlugin->Initialize( 'Test Plugin for the Wordpress Plugin Framework', '1.00', my-test-plugin', 'my-test-plugin' );
 }
 }}}
 
-= Adding & Registering Plugin Options=
+A full description of the `Initialize()` function is provided below.
+
+{{{
+/**
+ * Initialize() - Initializes the standard parameter set associated with this plugin.
+ *
+ * This function initializes the standard parameter set associated with this plugin so that the plugin
+ * may be safely integrated into the Wordpress core.
+ *
+ * @param string    $title                The title of the plugin.
+ * @param string    $version              The version of the plugin.
+ * @param string    $subfolderName        The name of the plugin subfolder installed under the root plugins directory.
+ * @param string    $fileName             The name of the plugin's main file.
+ * 
+ * @return void     None.  	 
+ * 
+ * @access public
+ * @since {WP 2.3}
+ * @author Keith Huster
+ */
+function Initialize( $title, $version, $subfolderName, $fileName )
+{
+  // Code to initialize the plugin...
+}
+}}}
+
+
+
+= Adding & Registering Plugin Options =
 
 The following sections discuss the methods used to add options (persitent data) to the plugin and properly register the plugin options with the Wordpress core.
 
@@ -284,6 +300,9 @@ The following documentation is provided for the `RegisterAdministrationPage()` f
  *
  * @param string    $parentMenu          Parent menu of the plugin's administration menu.
  * @param string    $minimumAccessLevel  Minimum user access rights required to access the plugin's administration page.
+ * @param string    $adminMenuTitle      Name of the plugin's administration menu.
+ * @param string    $adminMenuPageTitle  Browser title of the plugin's administration page.
+ * @param string    $adminMenuPageSlug   URI slug displayed for the plugin's administration webpage.
  * 
  * @return void     None.  	 
  * 
@@ -291,7 +310,7 @@ The following documentation is provided for the `RegisterAdministrationPage()` f
  * @since {WP 2.3}
  * @author Keith Huster
  */
-function RegisterAdministrationPage( $parentMenu, $minimumAccessLevel )
+function RegisterAdministrationPage( $parentMenu, $minimumAccessLevel, $adminMenuTitle, $adminMenuPageTitle, $adminMenuPageSlug )
 {
   // Code used to register the plugin administration page...
 }
@@ -317,7 +336,7 @@ So for our example plugin design we will need to add the plugin administration p
 
 {{{
 // Register the plugin administration page with the Wordpress dashboard core.
-$myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $myTestPlugin->RIGHTS_REQUIRED_ADMIN );
+$myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $myTestPlugin->RIGHTS_REQUIRED_ADMIN, 'My Test Plugin', 'My Test Plugin Options Page', 'my-test-plugin-options' );
 }}}
 
 Once the plugin has been successfully initialized an administration interface has been added and registered the plugin can be safely integrated into a Wordpress installation.
@@ -404,15 +423,16 @@ class MyTestPlugin extends MyTestPlugin_WordpressPluginFramework
  */
 if( !$myTestPlugin )
 {
-  // Create a new instance of My Test Plugin.
+  // Create a new instance of My Test Plugin class and initialize the plugin.
   $myTestPlugin = new MyTestPlugin();
+  $myTestPlugin->Initialize( 'Test Plugin for the Wordpress Plugin Framework', '1.00', my-test-plugin', 'my-test-plugin' );
 
   // Add the plugin options and initialize the plugin.
   $myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_TEXTBOX, 'myTextboxOption', 'Hello!', 'Simple textbox option for your plugin.' );
-  $myTestPlugin->Initialize( __FILE__ );
+  $myTestPlugin->RegisterOptions( __FILE__ );
 
   // Add the administration page content blocks and register the page.
   $myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myTestPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
-  $myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $myTestPlugin->RIGHTS_REQUIRED_ADMIN );
+  $myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $myTestPlugin->RIGHTS_REQUIRED_ADMIN, 'My Test Plugin', 'My Test Plugin Options Page', 'my-test-plugin-options' );
 }
 }}}
