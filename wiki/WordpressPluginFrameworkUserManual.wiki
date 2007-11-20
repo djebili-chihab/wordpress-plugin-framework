@@ -7,6 +7,8 @@ The Wordpress Plugin Framework (WPF) is a PHP class that is used to provide a fr
 
  _NOTE:_ This guide is written specifically for the *Wordpress Plugin Framework v0.04* release.
 
+ _NOTE:_ This latest version of this document can be found at [http://code.google.com/p/wordpress-plugin-framework/w/edit/WordpressPluginFrameworkUserManual http://code.google.com/p/wordpress-plugin-framework/w/edit/WordpressPluginFrameworkUserManual].
+
 
 
 = Getting Started =
