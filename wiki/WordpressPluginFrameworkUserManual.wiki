@@ -121,6 +121,8 @@ if( !$myTestPlugin  )
 
 A full description of the `Initialize()` function is provided below.
 
+ _NOTE:_ The `Initialize()` function adds a hidden `xxx_pluginInstalled` (where `xxx` is the name of the plugin class) option to the plugin options array. This option is used throughout the WPF class to determine if the plugin is currently installed.
+
 {{{
 /**
  * Initialize() - Initializes the standard parameter set associated with this plugin.
@@ -158,6 +160,8 @@ Plugin options provide are simply persistent pieces of data that are stored with
 To add an option to the plugin you simply need to call the `AddOption()` function and provide it with the appropriate set of parameters for the specific option that is being added to the plugin.
 
 So for this example a single HTML textbox option named `"myTextboxOption"` will be added to the `$myTestPlugin` class. This textbox will default to the text string `"Hello!"` and will be modifiable by the user. A description of the textbox option that displays `"'Simple textbox option for your plugin."` will also be provided to the user. The code to implement this option is described below.
+
+ _NOTE:_ The `AddOption()` function prefixes the specified option name with the name of the plugin class to help prevent option name duplication between multiple activated plugins. So for this example, the `myTextboxOption` name would be modified to be `mytestplugin_myTextboxOption` in the Wordpress options database. The prefixed class name is completely handled within the WPF base class and it is not required to utilize this prefix within the plugin class file.
 
 {{{
 $myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_TEXTBOX, 'myTextboxOption', 'Hello!', 'Simple textbox option for your plugin.' );
