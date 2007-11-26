@@ -301,10 +301,10 @@ So for this example plugin we would need to do the following.
 
 {{{
 // Add the requested "About This Plugin" web links.
-   $donateLink = 'http://www.mytestplugin.com/donate';
-   $homepageLink = 'http://www.mytestplugin.com';
-   $supportForumLink = 'http://www.mytestplugin.com/support';
-   $myTestPlugin->AddAboutThisPluginLinks( $donateLink, $homepageLink, $supportForumLink );
+$donateLink = 'http://www.mytestplugin.com/donate';
+$homepageLink = 'http://www.mytestplugin.com';
+$supportForumLink = 'http://www.mytestplugin.com/support';
+$myTestPlugin->AddAboutThisPluginLinks( $donateLink, $homepageLink, $supportForumLink );
 }}}
 
 == Registering the Plugin Administration Page ==
@@ -460,7 +460,15 @@ if( !$myTestPlugin )
   $myTestPlugin->RegisterOptions( __FILE__ );
 
   // Add the administration page content blocks and register the page.
-  $myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myTestPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
+  $myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myTestPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array( $myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock' ) );
+
+  // Add the requested "About This Plugin" web links.
+  $donateLink = 'http://www.mytestplugin.com/donate';
+  $homepageLink = 'http://www.mytestplugin.com';
+  $supportForumLink = 'http://www.mytestplugin.com/support';
+  $myTestPlugin->AddAboutThisPluginLinks( $donateLink, $homepageLink, $supportForumLink );
+
+  // Register the plugin administration page with the Wordpress core.
   $myTestPlugin->RegisterAdministrationPage( $myTestPlugin->PARENT_MENU_PLUGINS, $myTestPlugin->RIGHTS_REQUIRED_ADMIN, 'My Test Plugin', 'My Test Plugin Options Page', 'my-test-plugin-options' );
 }
 }}}
