@@ -29,11 +29,16 @@ The following subsections need to be filled in to provide information about the 
 
   || *Criteria Type* || *Advantage / Disadvantage* || *Data* ||
   || Performance || Disadvantage || All functionality contained within every instance. ||
+  || Usability || Advantage || Lower barrier for entry for absolute beginners ||
 
 == Object-Based Architecture ==
 
   || *Criteria Type* || *Advantage / Disadvantage* || *Data* ||
   || Usability || Advantage || Lower barrier for entry, i.e. closer resemblence to real world. ||
+  || Usability || Advantage || Ease of understanding encourages re-use ||
+  || Usability || Advantage || More maintainable implementation code. ||
+  || Usability || Disadvantage || Requires (basic) knowledge of object oriented PHP. ||
+  || Maintainability || Advantage || Easier to maintain as functionality can be split between files and classes. ||
 
 
 = WPF Installation Architecture Reviews =
@@ -49,3 +54,4 @@ The following subsections need to be filled in to provide information about the 
 
   || *Criteria Type* || *Advantage / Disadvantage* || *Data* ||
   || Maintainability || Disadvantage || Requires updates to remain backward compatible. ||
+  || Performance || Advantage || Improved potential for active development. ||
