@@ -299,7 +299,7 @@ Once all of the content blocks have been added to the plugin administration page
 
 The following documentation is provided for the `RegisterAdministrationPage()` function to help answer any questions that may be present at this time.
 
-_NOTE:_ The `RegisterAdministrationPage()` function adds a special administration page block that lists the information for all of the plugin's options if the plugin was initialized in "Debug Mode". This information can be used by developers to help troubleshoot issues during plugin development. See the `Initialize()` function for more information of how to enable "Debug Mode".
+ _NOTE:_ The `RegisterAdministrationPage()` function adds a special administration page block that lists the information for all of the plugin's options if the plugin was initialized in "Debug Mode". This information can be used by developers to help troubleshoot issues during plugin development. See the `Initialize()` function for more information of how to enable "Debug Mode".
 
 {{{
 /**
