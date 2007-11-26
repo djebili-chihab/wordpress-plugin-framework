@@ -115,7 +115,7 @@ if( !$myTestPlugin  )
   $myTestPlugin = new MyTestPlugin();
 
   // Initialize the plugin.
-  $myTestPlugin->Initialize( 'Test Plugin for the Wordpress Plugin Framework', '1.00', my-test-plugin', 'my-test-plugin' );
+  $myTestPlugin->Initialize( 'Test Plugin for the Wordpress Plugin Framework', '1.00', my-test-plugin', 'my-test-plugin', true );
 }
 }}}
 
