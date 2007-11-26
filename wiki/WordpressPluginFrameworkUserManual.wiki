@@ -291,9 +291,25 @@ function HTML_DisplayPluginHelloWorldBlock()
 $myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myTestPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
 }}}
 
+== Adding About This Plugin Links ==
+
+The Wordpress Plugin Framework automatically creates a SIDEBAR administration page content block that includes links to more information about the plugin including the plugin's homepage, support forum, and donation link. This content block is created by calling the `AddAboutThisPluginLinks()` function.
+
+ _NOTE:_ The `AddAboutThisPluginLinks()` is optional and is not required by the WPF. If this function is not called during plugin initialization then the WPF will simply omit these links from the "About This Plugin" SIDEBAR content block.
+
+So for this example plugin we would need to do the following.
+
+{{{
+// Add the requested "About This Plugin" web links.
+   $donateLink = 'http://www.mytestplugin.com/donate';
+   $homepageLink = 'http://www.mytestplugin.com';
+   $supportForumLink = 'http://www.mytestplugin.com/support';
+   $myTestPlugin->AddAboutThisPluginLinks( $donateLink, $homepageLink, $supportForumLink );
+}}}
+
 == Registering the Plugin Administration Page ==
 
-Once all of the content blocks have been added to the plugin administration page it is safe to call the `RegisterAdministrationPage()` function to properly register and display the plugin administration page within the Wordpress dashboard.
+Once all of the content blocks have been added to the plugin administration page and the "About This Plugin" links have been added it is safe to call the `RegisterAdministrationPage()` function to properly register and display the plugin administration page within the Wordpress dashboard.
 
  _NOTE:_ The WPF requires that all of the plugin page blocks must be added prior to registering the plugin administration page. Also, the blocks will be displayed in the order that they are added to the page. For proper block positioning, all "Main" blocks must be added prior to adding the "Sidebar" blocks (allows the CSS "float" property to work correctly).
 
