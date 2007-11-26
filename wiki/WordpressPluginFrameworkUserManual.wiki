@@ -134,6 +134,7 @@ A full description of the `Initialize()` function is provided below.
  * @param string    $version              The version of the plugin.
  * @param string    $subfolderName        The name of the plugin subfolder installed under the root plugins directory.
  * @param string    $fileName             The name of the plugin's main file.
+ * @param boolean   $debugModeFlag        Flag indicating the state of the plugin debug mode.
  * 
  * @return void     None.  	 
  * 
@@ -141,7 +142,7 @@ A full description of the `Initialize()` function is provided below.
  * @since {WP 2.3}
  * @author Keith Huster
  */
-function Initialize( $title, $version, $subfolderName, $fileName )
+function Initialize( $title, $version, $subfolderName, $fileName, $debugModeFlag )
 {
   // Code to initialize the plugin...
 }
@@ -298,6 +299,8 @@ Once all of the content blocks have been added to the plugin administration page
 
 The following documentation is provided for the `RegisterAdministrationPage()` function to help answer any questions that may be present at this time.
 
+_NOTE:_ The `RegisterAdministrationPage()` function adds a special administration page block that lists the information for all of the plugin's options if the plugin was initialized in "Debug Mode". This information can be used by developers to help troubleshoot issues during plugin development. See the `Initialize()` function for more information of how to enable "Debug Mode".
+
 {{{
 /**
  * RegisterAdministrationPage() - Registers the plugin's administration page.
@@ -432,8 +435,9 @@ class MyTestPlugin extends MyTestPlugin_WordpressPluginFramework
 if( !$myTestPlugin )
 {
   // Create a new instance of My Test Plugin class and initialize the plugin.
+  // NOTE: Initialize the plugin in "Debug Mode".
   $myTestPlugin = new MyTestPlugin();
-  $myTestPlugin->Initialize( 'Test Plugin for the Wordpress Plugin Framework', '1.00', my-test-plugin', 'my-test-plugin' );
+  $myTestPlugin->Initialize( 'Test Plugin for the Wordpress Plugin Framework', '1.00', my-test-plugin', 'my-test-plugin', true );
 
   // Add the plugin options and initialize the plugin.
   $myTestPlugin->AddOption( $myTestPlugin->OPTION_TYPE_TEXTBOX, 'myTextboxOption', 'Hello!', 'Simple textbox option for your plugin.' );
