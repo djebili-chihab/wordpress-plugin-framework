@@ -291,7 +291,7 @@ function HTML_DisplayPluginHelloWorldBlock()
 $myTestPlugin->AddAdministrationPageBlock( 'block-hello-world', 'Hello World', $myTestPlugin->CONTENT_BLOCK_TYPE_SIDEBAR, array($myTestPlugin, 'HTML_DisplayPluginHelloWorldBlock') );
 }}}
 
-== Adding About This Plugin Links ==
+== Adding "About This Plugin" Links ==
 
 The Wordpress Plugin Framework automatically creates a SIDEBAR administration page content block that includes links to more information about the plugin including the plugin's homepage, support forum, and donation link. This content block is created by calling the `AddAboutThisPluginLinks()` function.
 
