@@ -1,7 +1,7 @@
 #labels Featured,Phase-Implementation
 *Deutschsprachige Dokumentation zum Verwenden des WordPress Plugin Framework
 
-IN VORBEREITUNG !!!
+= IN VORBEREITUNG !!! =
 
 = Einführung =
 Das WordPress Plugin Framework (WPF) ist eine PHP-Klasse, die den Rahmen für das Entwickeln eines WordPress-Plugins zur Verfügung stellt. Die Absicht des WPF ist es, eine Baukastensystem zur Verfügung zu stellen und damit die Entwicklung und Verallgemeinerung von WordPress-Plugins zu vereinfachen. Das Framework stellt eine gemeinsame Basis dar und vereinfacht die Entwicklugn von Plugins für WordPress.
