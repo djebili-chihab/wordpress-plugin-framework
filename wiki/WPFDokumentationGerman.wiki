@@ -1,4 +1,5 @@
-= Wordpress Plugin Framework Dokumentation (german) =
+#labels Featured,Phase-Implementation
+*Deutschsprachige Dokumentation zum Verwenden des WordPress Plugin Framework
 
 IN VORBEREITUNG !!!
 
@@ -8,7 +9,18 @@ Diese Dokumentation hilft ihnen mit dem WPF zu arbeiten und in ihrem Projekt zu 
 
   * _NOTE:_ Diese Dokumentation ist auf Basis des WordPress Plugin Framework Version 0.04 erstellt.
 
-= Details =
+= Getting Started =
+
+Dieser Abschnitt stellt eine Strategie für das Erstellen eines WordPress-Plugins auf Basis des WPF zur Verfügung.
+
+
+  * _NOTE:_ Throughout this document I will reference the design and development of a fictional *My Test Plugin* that resides in the *my-test-plugin* folder and is implemented as the *my-test-plugin.php* file. 
+
+== Creating a Plugin Package ==
+
+
+
+
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
