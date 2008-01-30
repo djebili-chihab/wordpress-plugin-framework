@@ -1,6 +1,4 @@
-= WordpressPluginFrameworkUserManual =
-Implementation guide for the Wordpress Plugin Framework.
-
+= Wordpress Plugin Framework Dokumentation (german) =
 
 #summary One-sentence summary of this page.
 
