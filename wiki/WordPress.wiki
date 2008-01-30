@@ -1,10 +1,10 @@
-_WordPress (english)_
-#WordPress is a state-of-the-art semantic personal publishing platform with a focus on aesthetics, web standards, and usability. What a mouthful. WordPress is both free and priceless at the same time.
+==_WordPress (english)==
+WordPress is a state-of-the-art semantic personal publishing platform with a focus on aesthetics, web standards, and usability. What a mouthful. WordPress is both free and priceless at the same time.
 
   * [http://wordpress.org/ WordPress Website]
 
-_WordPress (deutsch)_
-#WordPress ist ein zeitgemässes Weblog-System zum Veröffentlichen persönlicher Beiträge -
+==WordPress (deutsch)==
+WordPress ist ein zeitgemässes Weblog-System zum Veröffentlichen persönlicher Beiträge -
 den Schwerpunkt bilden Ästhetik, Webstandards und Benutzerfreundlichkeit. WordPress basiert
 auf PHP und MySQL, ist frei erhältlich, einfach zu installieren und wird allen Ansprüchen an einen professionellen Webauftritt gerecht.
 [http://wordpress-deutschland.org/ WordPress Deutschland] ist die zentrale Anlaufstelle der deutschsprachigen Nutzer von WordPress. 
