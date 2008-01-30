@@ -3,6 +3,8 @@ WordPress is a state-of-the-art semantic personal publishing platform with a foc
 
   * [http://wordpress.org/ WordPress Website]
 
+
+
 ==WordPress (deutsch)==
 WordPress ist ein zeitgemässes Weblog-System zum Veröffentlichen persönlicher Beiträge -
 den Schwerpunkt bilden Ästhetik, Webstandards und Benutzerfreundlichkeit. WordPress basiert
