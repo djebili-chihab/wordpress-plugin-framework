@@ -1,3 +1,5 @@
+*Short Informations to WordPress
+
 ==WordPress (english)==
 WordPress is a state-of-the-art semantic personal publishing platform with a focus on aesthetics, web standards, and usability. What a mouthful. WordPress is both free and priceless at the same time.
 
