@@ -21,7 +21,7 @@ Für das genannte Beispiel müssen folgende Schritte ausgeführt werden:
   # Erstelle einen *my-test-plugin* Ordner.
   # Erstelle eine *my-test-plugin.php* Datei im *my-test-plugin* Ordner.
 
-An diesem Punkt muss keine Zeile Code geschrieben werden. Dazu wird der Download und die Integartion des WPF benötigt. Beginne erst mit der Entwicklugn des Plugins, wenn das WPF vorliegt.
+An diesem Punkt muss keine Zeile Code geschrieben werden. Dazu wird der Download und die Integartion des WPF benötigt. Beginne erst mit der Entwicklung des Plugins, wenn das WPF vorliegt.
 
   * _HINWEIS:_ Möglicherweise soll das entwickelte Plugin-Paket mit dem WordPress Subversion-Repository verwaltet werden, um die ordnungsgemäße Kontrolle und Revision für alle NUtzer des Plugins zu gewährleisten. Information zum WordPress Subversion-Repository wird es in diesem Dokument nicht geben. Es gibt jedach weitere Informationen auf der Wordpress Extend [http://wordpress.org/extend/plugins/add/ Add Your Plugin] Webseite.
 
@@ -30,7 +30,17 @@ Nach dem nun das Plugin-Paket erstellt wurde, sollte das WPF im Paket integriert
 
   [http://wordpress.org/extend/plugins/wordpress-plugin-framework/ Klick hier zum Download des letzten Release des Wordpress Plugin Framework]
 
+== Integartion des WordPress Plugin-Framework ==
+Die Integartion des WPF gestalltet sich recht einfach. ALs erstes muss die Datei, welche du beim Download aus dem WordPress Subversion-Repository erhalten hast, entpackt werden. Für die Entwicklung benötigt man nun die *wordpress-plugin-framework.php* und *README.txt*. Kopiere beide Dateien in dein Plugin Packet.
 
+Für das genannte Beispiel müssen folgende Schritte ausgeführt werden:
+  # Entpacke die Archiv-Datei in den *WordPress Plugin-Framework*-Ordner
+  # Kopiere die *wordpress-plugin-framework.php* in den Ordner *my-test-plugin*
+  # Kopiere die *README.txt* in den Ordner *my-test-plugin*
+
+Das war es schon fast. Es ist lediglich noch notwendig, dass ein kleiner Abschnitt der *wordpress-plugin-framework.php* an dein Plugin angepasst wird.
+
+== WordPress Plugin-Framwork anpassen ==
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
