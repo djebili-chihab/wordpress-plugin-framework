@@ -7,20 +7,28 @@
 Das WordPress Plugin Framework (WPF) ist eine PHP-Klasse, die den Rahmen für das Entwickeln eines WordPress-Plugins zur Verfügung stellt. Die Absicht des WPF ist es, eine Baukastensystem zur Verfügung zu stellen und damit die Entwicklung und Verallgemeinerung von WordPress-Plugins zu vereinfachen. Das Framework stellt eine gemeinsame Basis dar und vereinfacht die Entwicklugn von Plugins für WordPress.
 Diese Dokumentation hilft ihnen mit dem WPF zu arbeiten und in ihrem Projekt zu nutzen. Realisieren sie ihr Plugin mit Hilfe der Basis-Klasse WordPress Plugin Framework und erleichtern sie die Entwicklung, erhöhen sie die Sicherheit und unterstützen sie die Standardisierung. 
 
-  * _NOTE:_ Diese Dokumentation ist auf Basis des WordPress Plugin Framework Version 0.04 erstellt.
+  * _HINWEIS:_ Diese Dokumentation ist auf Basis des WordPress Plugin Framework Version 0.04 erstellt.
 
-= Getting Started =
-
+= Erste Schritte =
 Dieser Abschnitt stellt eine Strategie für das Erstellen eines WordPress-Plugins auf Basis des WPF zur Verfügung.
 
+  * _HINWEIS:_ Die Dokumentation basiert auf Konzept und Entwicklung eines fiktiven *My Test Plugin*, welches im Ordner *my-test-plugin* umgestezt wird und den Dateinamen *my-test-plugin.php* trägt.
 
-  * _NOTE:_ Throughout this document I will reference the design and development of a fictional *My Test Plugin* that resides in the *my-test-plugin* folder and is implemented as the *my-test-plugin.php* file. 
+== Plugin Packet erstellen ==
+Der Erste Schritt beim Entwickeln eines WordPress Plugins ist das Erstellen eines Plugin-Paketes. Dieses Paket besteht aus einem Ordner mit einem speziellen Namen und enthält die Plugin-Dateien und -Ordner. Die wichtigste Plugin-Datei muss einen eindeutigen Namen haben.
 
-== Creating a Plugin Package ==
+Für das genannte Beispiel müssen folgende Schritte ausgeführt werden:
+  # Erstelle einen *my-test-plugin* Ordner.
+  # Erstelle eine *my-test-plugin.php* Datei im *my-test-plugin* Ordner.
 
+An diesem Punkt muss keine Zeile Code geschrieben werden. Dazu wird der Download und die Integartion des WPF benötigt. Beginne erst mit der Entwicklugn des Plugins, wenn das WPF vorliegt.
 
+  * _HINWEIS:_ Möglicherweise soll das entwickelte Plugin-Paket mit dem WordPress Subversion-Repository verwaltet werden, um die ordnungsgemäße Kontrolle und Revision für alle NUtzer des Plugins zu gewährleisten. Information zum WordPress Subversion-Repository wird es in diesem Dokument nicht geben. Es gibt jedach weitere Informationen auf der Wordpress Extend [http://wordpress.org/extend/plugins/add/ Add Your Plugin] Webseite.
 
+__ WordPress Plugin-Framwork beziehen ==
+Nach dem nun das Plugin-Paket erstellt wurde, sollte das WPF im Paket integriert werden. Dazu ist das Framework als Download im WordPress Subversion-Repository frei verfügbar
 
+  [http://wordpress.org/extend/plugins/wordpress-plugin-framework/ Klick hier zum Download des letzten Release des Wordpress Plugin Framework]
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
