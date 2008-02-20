@@ -25,10 +25,12 @@ An diesem Punkt muss keine Zeile Code geschrieben werden. Dazu wird der Download
 
   * _HINWEIS:_ Möglicherweise soll das entwickelte Plugin-Paket mit dem WordPress Subversion-Repository verwaltet werden, um die ordnungsgemäße Kontrolle und Revision für alle NUtzer des Plugins zu gewährleisten. Information zum WordPress Subversion-Repository wird es in diesem Dokument nicht geben. Es gibt jedach weitere Informationen auf der Wordpress Extend [http://wordpress.org/extend/plugins/add/ Add Your Plugin] Webseite.
 
-__ WordPress Plugin-Framwork beziehen ==
+== WordPress Plugin-Framwork beziehen ==
 Nach dem nun das Plugin-Paket erstellt wurde, sollte das WPF im Paket integriert werden. Dazu ist das Framework als Download im WordPress Subversion-Repository frei verfügbar
 
   [http://wordpress.org/extend/plugins/wordpress-plugin-framework/ Klick hier zum Download des letzten Release des Wordpress Plugin Framework]
+
+
 
 Add your content here.  Format your content with:
   * Text in *bold* or _italic_
