@@ -31,7 +31,7 @@ Nach dem nun das Plugin-Paket erstellt wurde, sollte das WPF im Paket eingebunde
   [http://wordpress.org/extend/plugins/wordpress-plugin-framework/ Klick hier zum Download des letzten Release des Wordpress Plugin Framework]
 
 == WordPress Plugin-Framework einbinden ==
-Die Integartion des WPF gestalltet sich recht einfach. ALs erstes muss die Datei, welche du beim Download aus dem WordPress Subversion-Repository erhalten hast, entpackt werden. Für die Entwicklung benötigt man nun die *wordpress-plugin-framework.php* und *README.txt*. Kopiere beide Dateien in dein Plugin Packet.
+Die Integartion des WPF gestalltet sich recht einfach. Als erstes muss die Datei, welche du beim Download aus dem WordPress Subversion-Repository erhalten hast, entpackt werden. Für die Entwicklung benötigt man nun die *wordpress-plugin-framework.php* und *README.txt*. Kopiere beide Dateien in dein Plugin Packet.
 
 Für das genannte Beispiel müssen folgende Schritte ausgeführt werden:
   # Entpacke die Archiv-Datei in den *WordPress Plugin-Framework*-Ordner
@@ -54,3 +54,7 @@ Für das genannte Beispiel müssen folgende Schritte ausgeführt werden:
 Nun steht die maßgeschneiderte *wordpress-plugin-framework.php* für das Plugin bereit. Ab diesem Punkt muss das WPF nicht mehr verändert werden, es sei denn:
 
   # _Das Plugin soll mit einem neuen Release des WPF arbeiten._ Dazu folge der Dokumentation des neuen Releases des WPF.
+  
+= Basic-Plugin-Implementierung =
+
+Die Vorraussetzungen sind nun soweit, dass die Entwicklung des Plugins starten kann.
