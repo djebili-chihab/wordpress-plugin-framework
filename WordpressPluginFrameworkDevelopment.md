@@ -1,0 +1,37 @@
+# Current Development #
+
+**Wordpress Plugin Framework - v0.05**
+
+This release improves on v0.04 by adding:
+  * **COMPLETE** - Developer debug interface (view of current option values).
+  * **IN PROGRESS** - Support for adding and removing Wordpress `filters` and `actions`.
+  * **COMPLETE** - Enhanced plugin administration.
+
+
+# Latest Release #
+
+**The Wordpress Plugin Framework v0.04 has been released.**
+
+This release improves upon v0.03 by adding several new enhanced administration features, formal documentation, and simplified WPF usage.
+
+## Details ##
+
+**This version is for evaluation use only!!!**
+
+This version demonstrates the basic design of the WPF as well as:
+  * Deriving a plugin from the WordpressPluginFramework base class.
+  * Creating options for the plugin.
+  * Initializing the plugin.
+  * Creating content blocks for the plugin's administration page.
+  * Registering the plugin's administration page with Wordpress.
+  * Updating plugin options.
+  * Resetting plugin options to default values.
+  * Uninstalling the plugin.
+
+Future versions will offer further management and background enhancements as well as the addition of plugin documentation, plugin usage, and plugin widget development strategies.
+
+Stay tuned for more!
+
+> -- Keith
+
+You can check out more of my work at [DoubleBlackDesign.com](http://www.doubleblackdesign.com).
